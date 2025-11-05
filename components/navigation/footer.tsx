@@ -1,7 +1,6 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
+import { navLinks } from "@/data/nav-links"
 
 export function Footer() {
   return (
@@ -30,14 +29,8 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-base">Enlaces</h4>
             <ul className="space-y-2 text-sm">
-              {[
-                { label: "Inicio", href: "/" },
-                { label: "Nosotros", href: "/nosotros" },
-                { label: "Equipo", href: "/equipo" },
-                { label: "Servicios", href: "/servicios" },
-                { label: "Eventos", href: "/eventos" },
-              ].map((link) => (
-                <li key={link.href}>
+              {navLinks.map((link) => (
+                <li key={link.id}>
                   <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
                     {link.label}
                   </Link>
