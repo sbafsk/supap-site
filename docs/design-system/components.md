@@ -16,24 +16,28 @@ This design system ensures consistent, accessible, and maintainable user interfa
 ### Core Accessibility Principles
 
 #### 1. Perceivable
+
 - **Color Contrast**: Minimum 4.5:1 for normal text, 3:1 for large text
 - **Alternative Text**: Provide meaningful alt text for all images and icons
 - **Scalable Text**: Support zoom up to 200% without loss of functionality
 - **Color Independence**: Don't rely solely on color to convey information
 
 #### 2. Operable
+
 - **Keyboard Navigation**: All interactive elements must be keyboard accessible
 - **Touch Targets**: Minimum 44x44px for mobile usability
 - **No Seizures**: Avoid content that flashes more than 3 times per second
 - **Focus Management**: Clear, visible focus indicators on all interactive elements
 
 #### 3. Understandable
+
 - **Clear Labels**: Use descriptive, consistent labeling
 - **Predictable Navigation**: Maintain consistent navigation patterns
 - **Error Prevention**: Clear validation and error messages
 - **Language Attributes**: Proper language attributes for screen readers
 
 #### 4. Robust
+
 - **Semantic HTML**: Use proper HTML elements and ARIA attributes
 - **Screen Reader Support**: Full compatibility with assistive technologies
 - **Browser Compatibility**: Support modern browsers and accessibility tools
@@ -49,12 +53,12 @@ interface AccessibleComponentProps {
   'aria-describedby'?: string;
   'aria-required'?: boolean;
   'aria-expanded'?: boolean;
-  
+
   // Standard props
   id?: string;
   className?: string;
   disabled?: boolean;
-  
+
   // Event handlers
   onClick?: () => void;
   onKeyDown?: (e: KeyboardEvent) => void;
@@ -106,6 +110,7 @@ const AccessibleComponent: React.FC<AccessibleComponentProps> = ({
 ### Color System
 
 #### Primary Colors
+
 ```css
 /* Primary Brand Colors */
 --color-primary-50: #eff6ff;
@@ -133,11 +138,18 @@ const AccessibleComponent: React.FC<AccessibleComponentProps> = ({
 ```
 
 #### Accessibility Color Requirements
+
 ```css
 /* High contrast combinations for accessibility */
-.text-on-primary { color: white; } /* 4.5:1 contrast ratio */
-.text-on-gray-100 { color: var(--color-gray-900); } /* 4.5:1 */
-.text-on-gray-900 { color: white; } /* 4.5:1 */
+.text-on-primary {
+  color: white;
+} /* 4.5:1 contrast ratio */
+.text-on-gray-100 {
+  color: var(--color-gray-900);
+} /* 4.5:1 */
+.text-on-gray-900 {
+  color: white;
+} /* 4.5:1 */
 
 /* Focus ring colors */
 .focus-ring-primary {
@@ -153,14 +165,14 @@ const AccessibleComponent: React.FC<AccessibleComponentProps> = ({
 
 ```css
 /* Font Sizes with Line Heights */
---text-xs: 0.75rem;     /* 12px - line-height: 1rem */
---text-sm: 0.875rem;    /* 14px - line-height: 1.25rem */
---text-base: 1rem;      /* 16px - line-height: 1.5rem */
---text-lg: 1.125rem;    /* 18px - line-height: 1.75rem */
---text-xl: 1.25rem;     /* 20px - line-height: 1.75rem */
---text-2xl: 1.5rem;     /* 24px - line-height: 2rem */
---text-3xl: 1.875rem;   /* 30px - line-height: 2.25rem */
---text-4xl: 2.25rem;    /* 36px - line-height: 2.5rem */
+--text-xs: 0.75rem; /* 12px - line-height: 1rem */
+--text-sm: 0.875rem; /* 14px - line-height: 1.25rem */
+--text-base: 1rem; /* 16px - line-height: 1.5rem */
+--text-lg: 1.125rem; /* 18px - line-height: 1.75rem */
+--text-xl: 1.25rem; /* 20px - line-height: 1.75rem */
+--text-2xl: 1.5rem; /* 24px - line-height: 2rem */
+--text-3xl: 1.875rem; /* 30px - line-height: 2.25rem */
+--text-4xl: 2.25rem; /* 36px - line-height: 2.5rem */
 
 /* Font Weights */
 --font-normal: 400;
@@ -173,17 +185,17 @@ const AccessibleComponent: React.FC<AccessibleComponentProps> = ({
 
 ```css
 /* Consistent spacing scale */
---space-1: 0.25rem;   /* 4px */
---space-2: 0.5rem;    /* 8px */
---space-3: 0.75rem;   /* 12px */
---space-4: 1rem;      /* 16px */
---space-5: 1.25rem;   /* 20px */
---space-6: 1.5rem;    /* 24px */
---space-8: 2rem;      /* 32px */
---space-10: 2.5rem;   /* 40px */
---space-12: 3rem;     /* 48px */
---space-16: 4rem;     /* 64px */
---space-20: 5rem;     /* 80px */
+--space-1: 0.25rem; /* 4px */
+--space-2: 0.5rem; /* 8px */
+--space-3: 0.75rem; /* 12px */
+--space-4: 1rem; /* 16px */
+--space-5: 1.25rem; /* 20px */
+--space-6: 1.5rem; /* 24px */
+--space-8: 2rem; /* 32px */
+--space-10: 2.5rem; /* 40px */
+--space-12: 3rem; /* 48px */
+--space-16: 4rem; /* 64px */
+--space-20: 5rem; /* 80px */
 ```
 
 ---
@@ -193,6 +205,7 @@ const AccessibleComponent: React.FC<AccessibleComponentProps> = ({
 ### Button Component
 
 #### Standard Implementation
+
 ```typescript
 interface ButtonProps {
   variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
@@ -293,6 +306,7 @@ const Button: React.FC<ButtonProps> = ({
 ```
 
 #### Accessibility Features
+
 - ✅ Minimum 44px touch target size
 - ✅ Focus ring indicators
 - ✅ Keyboard navigation support
@@ -303,6 +317,7 @@ const Button: React.FC<ButtonProps> = ({
 ### Form Components
 
 #### Input Component
+
 ```typescript
 interface InputProps {
   id: string;
@@ -341,11 +356,11 @@ const Input: React.FC<InputProps> = ({
     // Minimum touch target
     'min-h-[44px]',
     // State styles
-    error 
-      ? 'border-red-300 focus:ring-red-500' 
+    error
+      ? 'border-red-300 focus:ring-red-500'
       : 'border-gray-300',
-    disabled 
-      ? 'bg-gray-50 cursor-not-allowed' 
+    disabled
+      ? 'bg-gray-50 cursor-not-allowed'
       : 'bg-white'
   ].join(' ');
 
@@ -354,7 +369,7 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <div className="space-y-1">
-      <label 
+      <label
         htmlFor={id}
         className="block text-sm font-medium text-gray-700"
       >
@@ -365,7 +380,7 @@ const Input: React.FC<InputProps> = ({
           </span>
         )}
       </label>
-      
+
       <input
         id={id}
         name={name}
@@ -381,9 +396,9 @@ const Input: React.FC<InputProps> = ({
         onChange={(e) => onChange(e.target.value)}
         onBlur={onBlur}
       />
-      
+
       {error && (
-        <div 
+        <div
           id={errorId}
           className="text-sm text-red-600"
           role="alert"
@@ -392,7 +407,7 @@ const Input: React.FC<InputProps> = ({
           {error}
         </div>
       )}
-      
+
       {/* Hidden description for screen readers */}
       {required && (
         <div id={`${id}-required`} className="sr-only">
@@ -405,6 +420,7 @@ const Input: React.FC<InputProps> = ({
 ```
 
 #### Form Accessibility Checklist
+
 - ✅ Every input has a corresponding label
 - ✅ Required fields are clearly marked
 - ✅ Error messages are announced to screen readers
@@ -415,6 +431,7 @@ const Input: React.FC<InputProps> = ({
 ### Navigation Components
 
 #### Accessible Navigation Menu
+
 ```typescript
 interface NavigationProps {
   items: NavigationItem[];
@@ -494,8 +511,8 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
             flex items-center px-3 py-2 rounded-md text-sm font-medium
             min-h-[44px] w-full
             focus:outline-none focus:ring-2 focus:ring-blue-500
-            ${isCurrent 
-              ? 'bg-blue-100 text-blue-700' 
+            ${isCurrent
+              ? 'bg-blue-100 text-blue-700'
               : 'text-gray-700 hover:bg-gray-100'
             }
           `}
@@ -511,7 +528,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
             </span>
           )}
           <span className="flex-1">{item.label}</span>
-          
+
           {hasChildren && (
             <button
               type="button"
@@ -522,7 +539,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
                 onToggle();
               }}
             >
-              <ChevronIcon 
+              <ChevronIcon
                 className={`w-4 h-4 transition-transform ${
                   expanded ? 'rotate-90' : ''
                 }`}
@@ -531,7 +548,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
           )}
         </a>
       </div>
-      
+
       {hasChildren && expanded && (
         <ul role="menu" className="ml-6 mt-1 space-y-1">
           {item.children.map((child) => (
@@ -556,24 +573,34 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
 ## Responsive Design Standards
 
 ### Breakpoint System
+
 ```css
 /* Mobile First Approach */
 /* Default: Mobile (0px - 639px) */
 
 /* Small screens (640px+) */
-@media (min-width: 640px) { /* sm: */ }
+@media (min-width: 640px) {
+  /* sm: */
+}
 
 /* Medium screens (768px+) */
-@media (min-width: 768px) { /* md: */ }
+@media (min-width: 768px) {
+  /* md: */
+}
 
 /* Large screens (1024px+) */
-@media (min-width: 1024px) { /* lg: */ }
+@media (min-width: 1024px) {
+  /* lg: */
+}
 
 /* Extra large screens (1280px+) */
-@media (min-width: 1280px) { /* xl: */ }
+@media (min-width: 1280px) {
+  /* xl: */
+}
 ```
 
 ### Responsive Component Patterns
+
 ```typescript
 // Responsive grid system
 const ResponsiveGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -625,6 +652,7 @@ const ResponsiveNav: React.FC = () => {
 ## Performance Guidelines
 
 ### Image Optimization
+
 ```typescript
 // Responsive image component
 interface ResponsiveImageProps {
@@ -660,6 +688,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
 ```
 
 ### Animation Performance
+
 ```css
 /* Use hardware acceleration for animations */
 .animate-slide-in {
@@ -685,6 +714,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
 ## Testing Guidelines
 
 ### Accessibility Testing
+
 ```typescript
 // Example accessibility tests
 describe('Button Component Accessibility', () => {
@@ -706,7 +736,7 @@ describe('Button Component Accessibility', () => {
 
     const button = screen.getByRole('button');
     button.focus();
-    
+
     fireEvent.keyDown(button, { key: 'Enter' });
     expect(onClick).toHaveBeenCalled();
   });
@@ -720,13 +750,14 @@ describe('Button Component Accessibility', () => {
 ```
 
 ### Visual Regression Testing
+
 ```typescript
 // Storybook visual testing configuration
 export default {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    chromatic: { 
+    chromatic: {
       viewports: [320, 768, 1200] // Test multiple viewports
     }
   }
@@ -749,7 +780,8 @@ export const AllVariants = () => (
 ## Documentation Requirements
 
 ### Component Documentation Template
-```markdown
+
+````markdown
 # Component Name
 
 Brief description of the component and its purpose.
@@ -767,14 +799,15 @@ import { ComponentName } from './ComponentName';
   Content
 </ComponentName>
 ```
+````
 
 ## Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| prop1 | string | - | Yes | Description |
-| prop2 | boolean | false | No | Description |
-| onAction | function | - | No | Callback function |
+| Prop     | Type     | Default | Required | Description       |
+| -------- | -------- | ------- | -------- | ----------------- |
+| prop1    | string   | -       | Yes      | Description       |
+| prop2    | boolean  | false   | No       | Description       |
+| onAction | function | -       | No       | Callback function |
 
 ## Accessibility
 
@@ -786,18 +819,22 @@ import { ComponentName } from './ComponentName';
 ## Examples
 
 ### Basic Usage
+
 [Code example]
 
 ### With Error State
+
 [Code example]
 
 ### Responsive Behavior
+
 [Code example]
 
 ## Related Components
 
 - [ComponentA](./ComponentA.md)
 - [ComponentB](./ComponentB.md)
+
 ```
 
 ---
@@ -816,3 +853,4 @@ import { ComponentName } from './ComponentName';
 
 **Last Updated**: [Current Date]
 **Next Review**: When adding new components or major design changes
+```

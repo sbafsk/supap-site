@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -21,13 +21,13 @@ interface GalleryModalProps {
 export function GalleryModal({ images, initialIndex, onClose }: GalleryModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
-  }
+  }, [images.length])
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
-  }
+  }, [images.length])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -38,7 +38,7 @@ export function GalleryModal({ images, initialIndex, onClose }: GalleryModalProp
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [onClose])
+  }, [onClose, handlePrevious, handleNext])
 
   const current = images[currentIndex]
 
@@ -56,7 +56,13 @@ export function GalleryModal({ images, initialIndex, onClose }: GalleryModalProp
       {/* Image container */}
       <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex flex-col items-center justify-center">
         <div className="relative w-full flex-1 flex items-center justify-center">
-          <Image src={current.src || "/placeholder.svg"} alt={current.alt} fill className="object-contain" priority />
+          <Image
+            src={current.src || "/placeholder.svg"}
+            alt={current.alt}
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
 
         {/* Navigation buttons */}
@@ -79,7 +85,9 @@ export function GalleryModal({ images, initialIndex, onClose }: GalleryModalProp
         {/* Caption and info */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
           <p className="text-white font-semibold text-lg">{current.caption}</p>
-          <p className="text-white/70 text-sm">{new Date(current.date).toLocaleDateString("es-ES")}</p>
+          <p className="text-white/70 text-sm">
+            {new Date(current.date).toLocaleDateString("es-ES")}
+          </p>
           <p className="text-white/50 text-xs mt-2">
             {currentIndex + 1} / {images.length}
           </p>

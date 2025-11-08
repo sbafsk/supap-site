@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
 
 interface GalleryItemProps {
   src: string
@@ -12,16 +11,16 @@ interface GalleryItemProps {
 }
 
 export function GalleryItem({ src, alt, caption, date, onClick }: GalleryItemProps) {
-  const [isLoading, setIsLoading] = useState(true)
-
   return (
-    <div onClick={onClick} className="group relative h-64 md:h-72 bg-muted rounded-lg overflow-hidden cursor-pointer">
+    <div
+      onClick={onClick}
+      className="group relative h-64 md:h-72 bg-muted rounded-lg overflow-hidden cursor-pointer"
+    >
       <Image
         src={src || "/placeholder.svg"}
         alt={alt}
         fill
         className="object-cover transition-transform duration-300 group-hover:scale-105"
-        onLoadingComplete={() => setIsLoading(false)}
       />
 
       {/* Overlay on hover */}

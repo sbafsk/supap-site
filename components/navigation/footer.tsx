@@ -22,7 +22,8 @@ export function Footer() {
               </div>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
-              Promoviendo el uso responsable y terapéutico de sustancias psicodélicas en el contexto de la salud mental.
+              Promoviendo el uso responsable y terapéutico de sustancias psicodélicas en el contexto
+              de la salud mental.
             </p>
           </div>
 
@@ -31,7 +32,10 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               {navLinks.map((link) => (
                 <li key={link.id}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -43,7 +47,10 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-base">Contacto</h4>
             <div className="space-y-2 text-sm text-white/70">
               <p>
-                <a href="mailto:supap.eventos@gmail.com" className="hover:text-white transition-colors">
+                <a
+                  href="mailto:supap.eventos@gmail.com"
+                  className="hover:text-white transition-colors"
+                >
                   supap.eventos@gmail.com
                 </a>
               </p>
@@ -63,7 +70,10 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/20 pt-8 text-center text-sm text-white/70">
-          <p>&copy; 2025 SUPAP - Sociedad Uruguaya de Psicoterapias Asistidas por Psicodélicos y Enteógenos</p>
+          <p>
+            &copy; 2025 SUPAP - Sociedad Uruguaya de Psicoterapias Asistidas por Psicodélicos y
+            Enteógenos
+          </p>
         </div>
       </div>
     </footer>

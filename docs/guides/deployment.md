@@ -11,16 +11,19 @@
 ## Deployment Environments
 
 ### Development
+
 - **URL**: [dev-url]
 - **Purpose**: Feature development and testing
 - **Auto-deploy**: On push to `develop` branch
 
 ### Staging
+
 - **URL**: [staging-url]
 - **Purpose**: Pre-production testing
 - **Auto-deploy**: On push to `staging` branch
 
 ### Production
+
 - **URL**: [production-url]
 - **Purpose**: Live application
 - **Auto-deploy**: On push to `main` branch
@@ -162,16 +165,19 @@ If deployment fails, the system automatically rolls back to the previous version
 ### Common Deployment Issues
 
 #### Build Failures
+
 - Check build logs for errors
 - Verify all dependencies are available
 - Check environment variable configuration
 
 #### Runtime Errors
+
 - Check application logs
 - Verify database connectivity
 - Check external service availability
 
 #### Performance Issues
+
 - Monitor response times
 - Check resource utilization
 - Review database query performance

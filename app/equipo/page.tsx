@@ -31,7 +31,8 @@ export default function TeamPage() {
       title: "Comisiones de Trabajo",
       icon: Briefcase,
       description: "7 comisiones especializadas que impulsan nuestras actividades",
-      members: "Comunicación • Académica • Reducción de Daños • Legal • Tesorería • Publicaciones • Eventos",
+      members:
+        "Comunicación • Académica • Reducción de Daños • Legal • Tesorería • Publicaciones • Eventos",
       color: "from-accent/20 to-accent/10",
       iconColor: "text-accent",
     },
@@ -60,10 +61,7 @@ export default function TeamPage() {
     },
   ]
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    element?.scrollIntoView({ behavior: "smooth" })
-  }
+  // Removed unused scroll helper to satisfy linting rules
 
   return (
     <div className="min-h-screen bg-background">
@@ -79,10 +77,12 @@ export default function TeamPage() {
 
         <div className="relative container mx-auto px-4 py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight">Nuestro Equipo</h1>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight">
+              Nuestro Equipo
+            </h1>
             <p className="text-lg md:text-xl text-white/90 text-pretty leading-relaxed max-w-2xl mx-auto">
-              Profesionales interdisciplinarios comprometidos con la excelencia en psicoterapias asistidas por
-              psicodélicos y enteógenos
+              Profesionales interdisciplinarios comprometidos con la excelencia en psicoterapias
+              asistidas por psicodélicos y enteógenos
             </p>
           </div>
         </div>
@@ -95,10 +95,12 @@ export default function TeamPage() {
             <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
               ESTRUCTURA ORGANIZACIONAL
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Estructura Organizacional</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Estructura Organizacional
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              SUPAP está organizada en comisiones especializadas que trabajan conjuntamente para cumplir con nuestra
-              misión.
+              SUPAP está organizada en comisiones especializadas que trabajan conjuntamente para
+              cumplir con nuestra misión.
             </p>
           </div>
 
@@ -119,7 +121,9 @@ export default function TeamPage() {
                     <CardTitle className="text-xl">{item.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <CardDescription className="text-base leading-relaxed">{item.description}</CardDescription>
+                    <CardDescription className="text-base leading-relaxed">
+                      {item.description}
+                    </CardDescription>
                     <div className="pt-4 border-t border-border">
                       <p className="text-sm text-muted-foreground font-medium">{item.members}</p>
                     </div>
@@ -138,9 +142,12 @@ export default function TeamPage() {
             <Badge className="mx-auto mb-4 px-4 py-1.5 bg-secondary/10 text-secondary border-secondary/20">
               GALERÍA
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Momentos de Nuestra Comunidad</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Momentos de Nuestra Comunidad
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Actividades, eventos y encuentros que reflejan nuestro compromiso con la excelencia y la colaboración
+              Actividades, eventos y encuentros que reflejan nuestro compromiso con la excelencia y
+              la colaboración
             </p>
           </div>
 
@@ -152,8 +159,12 @@ export default function TeamPage() {
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
-            <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">VALORES</Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Nuestros Valores</h2>
+            <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
+              VALORES
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Nuestros Valores
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               Los principios que guían nuestro trabajo y compromiso con la comunidad
             </p>
@@ -163,7 +174,10 @@ export default function TeamPage() {
             {teamValues.map((value, idx) => {
               const IconComponent = value.icon
               return (
-                <Card key={idx} className="border-0 shadow-lg hover:shadow-xl transition-all text-center">
+                <Card
+                  key={idx}
+                  className="border-0 shadow-lg hover:shadow-xl transition-all text-center"
+                >
                   <CardHeader>
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="h-6 w-6 text-primary" />
@@ -171,7 +185,9 @@ export default function TeamPage() {
                     <CardTitle className="text-lg">{value.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="leading-relaxed">{value.description}</CardDescription>
+                    <CardDescription className="leading-relaxed">
+                      {value.description}
+                    </CardDescription>
                   </CardContent>
                 </Card>
               )
@@ -184,13 +200,18 @@ export default function TeamPage() {
       <section className="py-20 md:py-28 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">¿Quieres formar parte de SUPAP?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              ¿Quieres formar parte de SUPAP?
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
-              Buscamos profesionales comprometidos con la excelencia terapéutica y la innovación en el campo de las
-              psicoterapias asistidas.
+              Buscamos profesionales comprometidos con la excelencia terapéutica y la innovación en
+              el campo de las psicoterapias asistidas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90"
+              >
                 <Mail className="mr-2 h-5 w-5" />
                 Información de Membresía
               </Button>

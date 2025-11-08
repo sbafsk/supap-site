@@ -7,6 +7,7 @@ Public-facing website for SUPAP (Sociedad Uruguaya de Psicoterapias Asistidas po
 **For complete project development information, start with `docs/index.md`**
 
 This root README provides quick setup instructions. For comprehensive development information including:
+
 - Current project status and progress
 - Development standards and guidelines
 - Business requirements and roadmap
@@ -20,9 +21,11 @@ This root README provides quick setup instructions. For comprehensive developmen
 SUPAP is an interdisciplinary civil association approved by the Ministry of Education and Culture (MEC) and the Ministry of Public Health (MSP) in Uruguay, dedicated to research, training, and dissemination in psychedelic-assisted psychotherapies.
 
 ### Mission
+
 To systematize psychotherapeutic interventions focused on integrating experiences that people have with psychedelics and entheogens into their daily lives, from a perspective of human rights, public health, and harm reduction.
 
 ### Key Objectives
+
 - Unite professionals, facilitators, and guides interested in psychedelic-assisted psychotherapy
 - Promote scientific knowledge and best practices
 - Provide training and capacity building
@@ -45,11 +48,13 @@ To systematize psychotherapeutic interventions focused on integrating experience
 ## Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ (or your runtime version)
 - [Yarn | npm | pnpm]
 - [Your Backend Requirements]
 
 ### 1. Clone and Install
+
 ```bash
 git clone <repository-url>
 cd supap
@@ -57,11 +62,13 @@ yarn install
 ```
 
 ### 2. Environment Setup
+
 ```bash
 cp env.example .env.local
 ```
 
 Fill in your environment variables:
+
 ```env
 # SUPAP Configuration
 NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -72,6 +79,7 @@ NEXT_PUBLIC_ORGANIZATION_WEBSITE=https://supap.uy
 ```
 
 ### 3. Development
+
 ```bash
 # Start development server
 [yarn|npm|pnpm] dev
@@ -112,6 +120,7 @@ supap/
 ## Website Purpose
 
 This is a **public-facing website** designed to:
+
 - Promote SUPAP's mission and values
 - Engage with the public about psychedelic-assisted psychotherapy
 - Provide information about activities and events
@@ -157,6 +166,7 @@ yarn type-check       # TypeScript type checking
 **Complete documentation is organized in the `/docs` folder**
 
 ### Quick Navigation
+
 - `docs/index.md` - Start here
 - `docs/status/progress.yaml` - Current status
 - `docs/architecture/overview.md` - Architecture
@@ -166,6 +176,7 @@ yarn type-check       # TypeScript type checking
 - `docs/session-management/` - Session notes and resumption checklist
 
 ### For AI Assistants & Developers
+
 - `.claude/` - Documentation commands and output style
 - `standards/` - Development standards and patterns
 - `.ai/` - AI-specific configuration and context
@@ -175,6 +186,7 @@ See `advanced_ia_doc_workflow.md` and `development_efficiency_optimization_guide
 ## AI Development Assistance
 
 ### MCP Integration
+
 We use Model Context Protocol (MCP) to enhance AI development assistance with 2-server setup (docs + standards).
 
 **→ See `docs/index.md` for complete MCP setup and testing instructions**
@@ -226,6 +238,3 @@ We use Model Context Protocol (MCP) to enhance AI development assistance with 2-
 3. Go to `docs/index.md` for complete technical documentation
 4. Check `docs/status/progress.yaml` for current status
 5. Follow `docs/guides/setup.md` for development workflow
-
-
-

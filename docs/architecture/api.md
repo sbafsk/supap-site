@@ -31,15 +31,19 @@
 ### Authentication
 
 #### POST /api/auth/login
+
 **Purpose**: User authentication
 **Request Body**:
+
 ```json
 {
   "email": "user@example.com",
   "password": "secure_password"
 }
 ```
+
 **Response**:
+
 ```json
 {
   "token": "jwt_token_here",
@@ -52,6 +56,7 @@
 ```
 
 #### POST /api/auth/logout
+
 **Purpose**: User logout
 **Headers**: `Authorization: Bearer {token}`
 **Response**: `{ "message": "Logged out successfully" }`
@@ -59,14 +64,17 @@
 ### [Resource 1] Management
 
 #### GET /api/[resource1]
+
 **Purpose**: Retrieve [resource1] list
 **Headers**: `Authorization: Bearer {token}`
 **Query Parameters**:
+
 - `page`: Page number (default: 1)
 - `limit`: Items per page (default: 20)
 - `[filter]`: [Filter description]
 
 **Response**:
+
 ```json
 {
   "data": [
@@ -88,6 +96,7 @@
 ## Error Handling
 
 ### Standard Error Response
+
 ```json
 {
   "error": {
@@ -99,6 +108,7 @@
 ```
 
 ### Common Error Codes
+
 - `400`: Bad Request - Invalid input data
 - `401`: Unauthorized - Authentication required
 - `403`: Forbidden - Insufficient permissions

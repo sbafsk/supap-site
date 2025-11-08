@@ -19,7 +19,7 @@ Separate business logic from presentation:
 const UserListContainer: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
-  
+
   const fetchUsers = useCallback(async () => {
     setLoading(true);
     try {
@@ -31,11 +31,11 @@ const UserListContainer: React.FC = () => {
       setLoading(false);
     }
   }, []);
-  
+
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
-  
+
   return <UserList users={users} loading={loading} onRefresh={fetchUsers} />;
 };
 
@@ -48,7 +48,7 @@ interface UserListProps {
 
 const UserList: React.FC<UserListProps> = ({ users, loading, onRefresh }) => {
   if (loading) return <LoadingSpinner />;
-  
+
   return (
     <div className="user-list">
       <button onClick={onRefresh}>Refresh</button>
@@ -124,18 +124,18 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [theme, setTheme] = useState<Theme>('light');
-  
+
   const toggleTheme = useCallback(() => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   }, []);
-  
+
   const value = {
     user,
     setUser,
     theme,
     toggleTheme
   };
-  
+
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
@@ -155,38 +155,36 @@ Manage complex state logic:
 
 ```typescript
 interface TodoState {
-  todos: Todo[];
-  filter: 'all' | 'active' | 'completed';
-  loading: boolean;
+  todos: Todo[]
+  filter: "all" | "active" | "completed"
+  loading: boolean
 }
 
 type TodoAction =
-  | { type: 'ADD_TODO'; payload: Todo }
-  | { type: 'TOGGLE_TODO'; payload: string }
-  | { type: 'SET_FILTER'; payload: 'all' | 'active' | 'completed' }
-  | { type: 'SET_LOADING'; payload: boolean };
+  | { type: "ADD_TODO"; payload: Todo }
+  | { type: "TOGGLE_TODO"; payload: string }
+  | { type: "SET_FILTER"; payload: "all" | "active" | "completed" }
+  | { type: "SET_LOADING"; payload: boolean }
 
 const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
   switch (action.type) {
-    case 'ADD_TODO':
-      return { ...state, todos: [...state.todos, action.payload] };
-    case 'TOGGLE_TODO':
+    case "ADD_TODO":
+      return { ...state, todos: [...state.todos, action.payload] }
+    case "TOGGLE_TODO":
       return {
         ...state,
-        todos: state.todos.map(todo =>
-          todo.id === action.payload
-            ? { ...todo, completed: !todo.completed }
-            : todo
-        )
-      };
-    case 'SET_FILTER':
-      return { ...state, filter: action.payload };
-    case 'SET_LOADING':
-      return { ...state, loading: action.payload };
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
+        ),
+      }
+    case "SET_FILTER":
+      return { ...state, filter: action.payload }
+    case "SET_LOADING":
+      return { ...state, loading: action.payload }
     default:
-      return state;
+      return state
   }
-};
+}
 ```
 
 ## Data Fetching Patterns
@@ -197,53 +195,53 @@ Encapsulate data fetching logic:
 
 ```typescript
 interface UseApiOptions<T> {
-  onSuccess?: (data: T) => void;
-  onError?: (error: Error) => void;
-  enabled?: boolean;
+  onSuccess?: (data: T) => void
+  onError?: (error: Error) => void
+  enabled?: boolean
 }
 
 const useApi = <T>(
   url: string,
   options: UseApiOptions<T> = {}
 ): {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-  refetch: () => void;
+  data: T | null
+  loading: boolean
+  error: Error | null
+  refetch: () => void
 } => {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
-  
+  const [data, setData] = useState<T | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<Error | null>(null)
+
   const fetchData = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    
+    setLoading(true)
+    setError(null)
+
     try {
-      const response = await fetch(url);
+      const response = await fetch(url)
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
-      const result = await response.json();
-      setData(result);
-      options.onSuccess?.(result);
+      const result = await response.json()
+      setData(result)
+      options.onSuccess?.(result)
     } catch (err) {
-      const error = err instanceof Error ? err : new Error('Unknown error');
-      setError(error);
-      options.onError?.(error);
+      const error = err instanceof Error ? err : new Error("Unknown error")
+      setError(error)
+      options.onError?.(error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  }, [url, options]);
-  
+  }, [url, options])
+
   useEffect(() => {
     if (options.enabled !== false) {
-      fetchData();
+      fetchData()
     }
-  }, [fetchData, options.enabled]);
-  
-  return { data, loading, error, refetch: fetchData };
-};
+  }, [fetchData, options.enabled])
+
+  return { data, loading, error, refetch: fetchData }
+}
 ```
 
 ### Query Pattern
@@ -254,35 +252,35 @@ Organize API queries:
 // API Query Functions
 export const userQueries = {
   getUsers: () => ({
-    queryKey: ['users'],
-    queryFn: () => api.getUsers()
+    queryKey: ["users"],
+    queryFn: () => api.getUsers(),
   }),
-  
+
   getUser: (id: string) => ({
-    queryKey: ['users', id],
-    queryFn: () => api.getUser(id)
+    queryKey: ["users", id],
+    queryFn: () => api.getUser(id),
   }),
-  
+
   createUser: (userData: CreateUserData) => ({
     mutationFn: (data: CreateUserData) => api.createUser(data),
     onSuccess: () => {
       // Invalidate and refetch users
-      queryClient.invalidateQueries({ queryKey: ['users'] });
-    }
-  })
-};
+      queryClient.invalidateQueries({ queryKey: ["users"] })
+    },
+  }),
+}
 
 // Usage in Components
 const UserList = () => {
-  const { data: users, isLoading } = useQuery(userQueries.getUsers());
-  const createUserMutation = useMutation(userQueries.createUser());
-  
+  const { data: users, isLoading } = useQuery(userQueries.getUsers())
+  const createUserMutation = useMutation(userQueries.createUser())
+
   const handleCreateUser = (userData: CreateUserData) => {
-    createUserMutation.mutate(userData);
-  };
-  
+    createUserMutation.mutate(userData)
+  }
+
   // Component logic
-};
+}
 ```
 
 ## Error Handling Patterns
@@ -305,16 +303,16 @@ class ErrorBoundary extends React.Component<
     super(props);
     this.state = { hasError: false };
   }
-  
+
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error };
   }
-  
+
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
     // Log to error reporting service
   }
-  
+
   render() {
     if (this.state.hasError) {
       return (
@@ -326,7 +324,7 @@ class ErrorBoundary extends React.Component<
         </div>
       );
     }
-    
+
     return this.props.children;
   }
 }
@@ -337,25 +335,23 @@ class ErrorBoundary extends React.Component<
 Handle success and error states consistently:
 
 ```typescript
-type Result<T, E = Error> = 
-  | { success: true; data: T }
-  | { success: false; error: E };
+type Result<T, E = Error> = { success: true; data: T } | { success: false; error: E }
 
 const safeApiCall = async <T>(fn: () => Promise<T>): Promise<Result<T>> => {
   try {
-    const data = await fn();
-    return { success: true, data };
+    const data = await fn()
+    return { success: true, data }
   } catch (error) {
-    return { success: false, error: error instanceof Error ? error : new Error('Unknown error') };
+    return { success: false, error: error instanceof Error ? error : new Error("Unknown error") }
   }
-};
+}
 
 // Usage
-const result = await safeApiCall(() => api.getUsers());
+const result = await safeApiCall(() => api.getUsers())
 if (result.success) {
-  setUsers(result.data);
+  setUsers(result.data)
 } else {
-  setError(result.error.message);
+  setError(result.error.message)
 }
 ```
 
@@ -368,15 +364,15 @@ Optimize expensive calculations:
 ```typescript
 const ExpensiveComponent: React.FC<{ items: Item[]; filter: string }> = ({ items, filter }) => {
   const filteredItems = useMemo(() => {
-    return items.filter(item => 
+    return items.filter(item =>
       item.name.toLowerCase().includes(filter.toLowerCase())
     );
   }, [items, filter]);
-  
+
   const sortedItems = useMemo(() => {
     return [...filteredItems].sort((a, b) => a.name.localeCompare(b.name));
   }, [filteredItems]);
-  
+
   return (
     <div>
       {sortedItems.map(item => (
@@ -396,13 +392,13 @@ const LazyComponent = lazy(() => import('./HeavyComponent'));
 
 const App = () => {
   const [showHeavy, setShowHeavy] = useState(false);
-  
+
   return (
     <div>
       <button onClick={() => setShowHeavy(true)}>
         Load Heavy Component
       </button>
-      
+
       {showHeavy && (
         <Suspense fallback={<LoadingSpinner />}>
           <LazyComponent />

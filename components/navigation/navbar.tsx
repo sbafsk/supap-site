@@ -8,11 +8,7 @@ import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-interface NavbarProps {
-  currentPage?: string
-}
-
-export function Navbar({ currentPage }: NavbarProps = {}) {
+export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
@@ -57,7 +53,9 @@ export function Navbar({ currentPage }: NavbarProps = {}) {
                 key={link.id}
                 href={link.href}
                 onClick={handleNavClick}
-                className={`transition-colors font-medium ${isActive(link.href) ? "text-primary font-bold" : "text-foreground/70 hover:text-primary"
+                className={`transition-colors font-medium ${isActive(link.href)
+                    ? "text-primary font-bold"
+                    : "text-foreground/70 hover:text-primary"
                   }`}
               >
                 {link.label}

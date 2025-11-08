@@ -11,17 +11,20 @@ export default function AboutPage() {
   const objectives = [
     {
       title: "Investigación Científica",
-      description: "Promover y facilitar la investigación rigurosa sobre psicoterapias asistidas por psicodélicos",
+      description:
+        "Promover y facilitar la investigación rigurosa sobre psicoterapias asistidas por psicodélicos",
       icon: Zap,
     },
     {
       title: "Formación Profesional",
-      description: "Desarrollar programas educativos de calidad para profesionales de la salud mental",
+      description:
+        "Desarrollar programas educativos de calidad para profesionales de la salud mental",
       icon: Target,
     },
     {
       title: "Seguridad y Ética",
-      description: "Establecer estándares éticos y de seguridad para prácticas terapéuticas responsables",
+      description:
+        "Establecer estándares éticos y de seguridad para prácticas terapéuticas responsables",
       icon: Award,
     },
     {
@@ -31,12 +34,14 @@ export default function AboutPage() {
     },
     {
       title: "Acceso a Tratamientos",
-      description: "Facilitar el acceso equitativo a tratamientos psicodélicos validados científicamente",
+      description:
+        "Facilitar el acceso equitativo a tratamientos psicodélicos validados científicamente",
       icon: CheckCircle,
     },
     {
       title: "Red Colaborativa",
-      description: "Construir una red internacional de profesionales comprometidos con la excelencia",
+      description:
+        "Construir una red internacional de profesionales comprometidos con la excelencia",
       icon: Users,
     },
   ]
@@ -62,7 +67,8 @@ export default function AboutPage() {
     {
       year: "2024",
       title: "Red Internacional",
-      description: "Establecimiento de alianzas con organizaciones internacionales de investigación",
+      description:
+        "Establecimiento de alianzas con organizaciones internacionales de investigación",
     },
     {
       year: "2025",
@@ -85,10 +91,12 @@ export default function AboutPage() {
 
         <div className="relative container mx-auto px-4 py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight">Acerca de SUPAP</h1>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight">
+              Acerca de SUPAP
+            </h1>
             <p className="text-lg md:text-xl text-white/90 text-pretty leading-relaxed max-w-2xl mx-auto">
-              Transformando la salud mental a través de investigación científica rigurosa y práctica terapéutica
-              responsable
+              Transformando la salud mental a través de investigación científica rigurosa y práctica
+              terapéutica responsable
             </p>
           </div>
         </div>
@@ -108,12 +116,14 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-foreground leading-relaxed">
-                  SUPAP se dedica a la investigación, educación y promoción del uso terapéutico responsable de
-                  sustancias psicodélicas y enteógenas en el contexto de la salud mental y el bienestar integral.
+                  SUPAP se dedica a la investigación, educación y promoción del uso terapéutico
+                  responsable de sustancias psicodélicas y enteógenas en el contexto de la salud
+                  mental y el bienestar integral.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Trabajamos para crear un marco científico, ético y legal que permita a los profesionales de la salud
-                  acceder a herramientas terapéuticas innovadoras para tratar trastornos mentales graves y resistentes.
+                  Trabajamos para crear un marco científico, ético y legal que permita a los
+                  profesionales de la salud acceder a herramientas terapéuticas innovadoras para
+                  tratar trastornos mentales graves y resistentes.
                 </p>
               </CardContent>
             </Card>
@@ -128,12 +138,14 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-foreground leading-relaxed">
-                  Una sociedad donde las psicoterapias asistidas por psicodélicos y enteógenos son reconocidas,
-                  investigadas y practicadas como herramientas terapéuticas seguras, efectivas y accesibles.
+                  Una sociedad donde las psicoterapias asistidas por psicodélicos y enteógenos son
+                  reconocidas, investigadas y practicadas como herramientas terapéuticas seguras,
+                  efectivas y accesibles.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Buscamos liderar el avance científico en Latinoamérica, demostrando que el uso responsable de estos
-                  recursos puede revolucionar el tratamiento de la salud mental.
+                  Buscamos liderar el avance científico en Latinoamérica, demostrando que el uso
+                  responsable de estos recursos puede revolucionar el tratamiento de la salud
+                  mental.
                 </p>
               </CardContent>
             </Card>
@@ -145,11 +157,13 @@ export default function AboutPage() {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
-            <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">HISTORIA</Badge>
+            <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
+              HISTORIA
+            </Badge>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Nuestro Camino</h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Desde nuestra fundación, hemos trabajado incansablemente para establecer los estándares más altos en
-              investigación y práctica clínica.
+              Desde nuestra fundación, hemos trabajado incansablemente para establecer los
+              estándares más altos en investigación y práctica clínica.
             </p>
           </div>
 
@@ -159,14 +173,19 @@ export default function AboutPage() {
                 {/* Timeline dot and line */}
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div className="w-6 h-6 bg-primary rounded-full border-4 border-background" />
-                  {idx !== milestones.length - 1 && <div className="w-1 h-32 md:h-40 bg-primary/20 mt-4" />}
+                  {idx !== milestones.length - 1 && (
+                    <div className="w-1 h-32 md:h-40 bg-primary/20 mt-4" />
+                  )}
                 </div>
 
                 {/* Content */}
                 <Card className="border-0 shadow-lg flex-1 mt-2">
                   <CardHeader>
                     <div className="flex items-baseline gap-4 mb-2">
-                      <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+                      <Badge
+                        variant="outline"
+                        className="bg-primary/10 text-primary border-primary/20"
+                      >
                         {milestone.year}
                       </Badge>
                       <CardTitle className="text-lg md:text-xl">{milestone.title}</CardTitle>
@@ -189,9 +208,12 @@ export default function AboutPage() {
             <Badge className="mx-auto mb-4 px-4 py-1.5 bg-secondary/10 text-secondary border-secondary/20">
               OBJETIVOS ESTRATÉGICOS
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Nuestros Objetivos</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Nuestros Objetivos
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Seis pilares estratégicos que guían nuestro trabajo y compromiso con la transformación de la salud mental
+              Seis pilares estratégicos que guían nuestro trabajo y compromiso con la transformación
+              de la salud mental
             </p>
           </div>
 
@@ -226,7 +248,9 @@ export default function AboutPage() {
             <Badge className="mx-auto mb-4 px-4 py-1.5 bg-accent/10 text-accent border-accent/20">
               VALORES FUNDAMENTALES
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Lo Que Nos Define</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Lo Que Nos Define
+            </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -269,11 +293,15 @@ export default function AboutPage() {
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
-            <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">ALIANZAS</Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Reconocimiento y Colaboraciones</h2>
+            <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
+              ALIANZAS
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Reconocimiento y Colaboraciones
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              SUPAP colabora con instituciones académicas, organismos de salud y organizaciones internacionales líderes
-              en investigación psicodélica
+              SUPAP colabora con instituciones académicas, organismos de salud y organizaciones
+              internacionales líderes en investigación psicodélica
             </p>
           </div>
 
@@ -281,11 +309,17 @@ export default function AboutPage() {
             {[
               {
                 title: "Autoridades Regulatorias",
-                items: ["Ministerio de Educación y Cultura (MEC)", "Ministerio de Salud Pública (MSP)"],
+                items: [
+                  "Ministerio de Educación y Cultura (MEC)",
+                  "Ministerio de Salud Pública (MSP)",
+                ],
               },
               {
                 title: "Redes Internacionales",
-                items: ["Psychedelic Research Initiative", "International Society for Psychedelic Research"],
+                items: [
+                  "Psychedelic Research Initiative",
+                  "International Society for Psychedelic Research",
+                ],
               },
               {
                 title: "Universidades Asociadas",
@@ -316,13 +350,18 @@ export default function AboutPage() {
       <section className="py-20 md:py-28 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Únete a Nuestro Movimiento</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Únete a Nuestro Movimiento
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
-              Sé parte de la revolución en salud mental. Juntos estamos transformando el futuro de la terapia
-              psicológica.
+              Sé parte de la revolución en salud mental. Juntos estamos transformando el futuro de
+              la terapia psicológica.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90"
+              >
                 Hacerse Socio
               </Button>
               <Button

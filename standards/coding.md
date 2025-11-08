@@ -19,6 +19,7 @@
 ### Naming Conventions
 
 #### Files & Directories
+
 - **Components**: PascalCase (`UserProfile.tsx`)
 - **Hooks**: camelCase (`useUserData.ts`)
 - **Utilities**: camelCase (`formatDate.ts`)
@@ -28,6 +29,7 @@
 - **Styles**: kebab-case (`user-profile.module.css`)
 
 #### Variables & Functions
+
 - **Variables**: camelCase (`userName`, `isLoading`)
 - **Functions**: camelCase (`getUserData`, `handleSubmit`)
 - **Boolean**: Prefix with `is`, `has`, `can` (`isVisible`, `hasPermission`)
@@ -42,41 +44,41 @@
 ```typescript
 // Prefer interfaces for object shapes
 interface UserProfile {
-  id: string;
-  email: string;
-  name: string;
-  role: UserRole;
-  createdAt: Date;
-  updatedAt: Date;
+  id: string
+  email: string
+  name: string
+  role: UserRole
+  createdAt: Date
+  updatedAt: Date
 }
 
 // Use enums for fixed sets of values
 enum UserRole {
-  ADMIN = 'admin',
-  CLIENT = 'client',
-  AGENCY = 'agency'
+  ADMIN = "admin",
+  CLIENT = "client",
+  AGENCY = "agency",
 }
 
 // Use type aliases for unions and complex types
 type ApiResponse<T> = {
-  data: T;
-  error?: string;
-  status: 'success' | 'error';
-  timestamp: Date;
-};
+  data: T
+  error?: string
+  status: "success" | "error"
+  timestamp: Date
+}
 
 // Use generics for reusable types
 interface Repository<T> {
-  findById(id: string): Promise<T | null>;
-  create(data: Omit<T, 'id'>): Promise<T>;
-  update(id: string, data: Partial<T>): Promise<T>;
-  delete(id: string): Promise<void>;
+  findById(id: string): Promise<T | null>
+  create(data: Omit<T, "id">): Promise<T>
+  update(id: string, data: Partial<T>): Promise<T>
+  delete(id: string): Promise<void>
 }
 
 // Use utility types effectively
-type CreateUserRequest = Omit<UserProfile, 'id' | 'createdAt' | 'updatedAt'>;
-type UpdateUserRequest = Partial<Pick<UserProfile, 'name' | 'email'>>;
-type UserResponse = Pick<UserProfile, 'id' | 'name' | 'email'>;
+type CreateUserRequest = Omit<UserProfile, "id" | "createdAt" | "updatedAt">
+type UpdateUserRequest = Partial<Pick<UserProfile, "name" | "email">>
+type UserResponse = Pick<UserProfile, "id" | "name" | "email">
 ```
 
 ### Strict Mode Configuration
@@ -101,44 +103,38 @@ type UserResponse = Pick<UserProfile, 'id' | 'name' | 'email'>;
 ```typescript
 // Use explicit return types for public functions
 export const calculateTotal = (items: CartItem[]): number => {
-  return items.reduce((total, item) => total + item.price * item.quantity, 0);
-};
+  return items.reduce((total, item) => total + item.price * item.quantity, 0)
+}
 
 // Avoid 'any' type - use 'unknown' or proper types
 const handleApiResponse = (response: unknown): ApiResponse<User> => {
   if (isValidApiResponse(response)) {
-    return response;
+    return response
   }
-  throw new Error('Invalid API response format');
-};
+  throw new Error("Invalid API response format")
+}
 
 // Use type guards for runtime type checking
 function isValidUser(obj: unknown): obj is User {
-  return (
-    typeof obj === 'object' &&
-    obj !== null &&
-    'id' in obj &&
-    'email' in obj &&
-    'name' in obj
-  );
+  return typeof obj === "object" && obj !== null && "id" in obj && "email" in obj && "name" in obj
 }
 
 // Use discriminated unions for state management
 type LoadingState = {
-  status: 'loading';
-};
+  status: "loading"
+}
 
 type SuccessState = {
-  status: 'success';
-  data: User[];
-};
+  status: "success"
+  data: User[]
+}
 
 type ErrorState = {
-  status: 'error';
-  error: string;
-};
+  status: "error"
+  error: string
+}
 
-type UserState = LoadingState | SuccessState | ErrorState;
+type UserState = LoadingState | SuccessState | ErrorState
 ```
 
 ## React & Next.js Standards
@@ -163,37 +159,37 @@ export const Component: React.FC<ComponentProps> = ({
   // Hooks at the top
   const [state, setState] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  
+
   // Custom hooks
   const { data, error } = useUserData();
-  
+
   // Event handlers with useCallback
   const handleClick = useCallback(() => {
     if (!disabled && !isLoading) {
       onAction();
     }
   }, [onAction, disabled, isLoading]);
-  
+
   // Memoized values
   const memoizedValue = useMemo(() => {
     return expensiveCalculation(data);
   }, [data]);
-  
+
   // Early returns for loading/error states
   if (isLoading) {
     return <LoadingSpinner />;
   }
-  
+
   if (error) {
     return <ErrorMessage error={error} />;
   }
-  
+
   // Main render
   return (
     <div className="component">
       <h2>{title}</h2>
-      <button 
-        onClick={handleClick} 
+      <button
+        onClick={handleClick}
         disabled={disabled}
         className="btn btn-primary"
       >
@@ -213,28 +209,28 @@ Component.displayName = 'Component';
 ```typescript
 // Custom hooks for reusable logic
 export const useUserData = (userId: string) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  
+  const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        setLoading(true);
-        const userData = await userService.getUser(userId);
-        setUser(userData);
+        setLoading(true)
+        const userData = await userService.getUser(userId)
+        setUser(userData)
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        setError(err instanceof Error ? err.message : "Unknown error")
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
-    
-    fetchUser();
-  }, [userId]);
-  
-  return { user, loading, error };
-};
+    }
+
+    fetchUser()
+  }, [userId])
+
+  return { user, loading, error }
+}
 
 // Hook with cleanup
 export const useEventListener = (
@@ -243,73 +239,70 @@ export const useEventListener = (
   element: Element | Window = window
 ) => {
   useEffect(() => {
-    element.addEventListener(eventName, handler);
-    
+    element.addEventListener(eventName, handler)
+
     return () => {
-      element.removeEventListener(eventName, handler);
-    };
-  }, [eventName, handler, element]);
-};
+      element.removeEventListener(eventName, handler)
+    }
+  }, [eventName, handler, element])
+}
 ```
 
 ### State Management
 
 ```typescript
 // Redux Toolkit slice example
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 
 interface UserState {
-  users: User[];
-  loading: boolean;
-  error: string | null;
+  users: User[]
+  loading: boolean
+  error: string | null
 }
 
 const initialState: UserState = {
   users: [],
   loading: false,
-  error: null
-};
+  error: null,
+}
 
 // Async thunk for API calls
-export const fetchUsers = createAsyncThunk(
-  'users/fetchUsers',
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await userService.getUsers();
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, { rejectWithValue }) => {
+  try {
+    const response = await userService.getUsers()
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.message)
   }
-);
+})
 
 const userSlice = createSlice({
-  name: 'users',
+  name: "users",
   initialState,
   reducers: {
     clearError: (state) => {
-      state.error = null;
-    }
+      state.error = null
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.loading = true
+        state.error = null
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.loading = false;
-        state.users = action.payload;
+        state.loading = false
+        state.users = action.payload
       })
       .addCase(fetchUsers.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-      });
-  }
-});
+        state.loading = false
+        state.error = action.payload as string
+      })
+  },
+})
 
-export const { clearError } = userSlice.actions;
-export default userSlice.reducer;
+export const { clearError } = userSlice.actions
+export default userSlice.reducer
 ```
 
 ## API & Data Fetching Standards
@@ -318,7 +311,7 @@ export default userSlice.reducer;
 
 ```typescript
 // Typed GraphQL operations
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client"
 
 const GET_USERS = gql`
   query GetUsers($filter: UserFilter) {
@@ -330,7 +323,7 @@ const GET_USERS = gql`
       createdAt
     }
   }
-`;
+`
 
 const CREATE_USER = gql`
   mutation CreateUser($input: CreateUserInput!) {
@@ -341,33 +334,33 @@ const CREATE_USER = gql`
       role
     }
   }
-`;
+`
 
 // Typed hooks for GraphQL
 export const useUsers = (filter?: UserFilter) => {
   const { data, loading, error, refetch } = useQuery(GET_USERS, {
     variables: { filter },
-    errorPolicy: 'all'
-  });
-  
+    errorPolicy: "all",
+  })
+
   return {
     users: data?.users || [],
     loading,
     error,
-    refetch
-  };
-};
+    refetch,
+  }
+}
 
 export const useCreateUser = () => {
   const [createUser, { loading, error }] = useMutation(CREATE_USER, {
     refetchQueries: [GET_USERS],
     onError: (error) => {
-      console.error('Failed to create user:', error);
-    }
-  });
-  
-  return { createUser, loading, error };
-};
+      console.error("Failed to create user:", error)
+    },
+  })
+
+  return { createUser, loading, error }
+}
 ```
 
 ### REST API Standards
@@ -375,68 +368,68 @@ export const useCreateUser = () => {
 ```typescript
 // API service with proper error handling
 class ApiService {
-  private baseURL: string;
-  
+  private baseURL: string
+
   constructor(baseURL: string) {
-    this.baseURL = baseURL;
+    this.baseURL = baseURL
   }
-  
+
   async get<T>(endpoint: string): Promise<ApiResponse<T>> {
     try {
       const response = await fetch(`${this.baseURL}${endpoint}`, {
-        method: 'GET',
-        headers: this.getHeaders()
-      });
-      
+        method: "GET",
+        headers: this.getHeaders(),
+      })
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
-      
-      const data = await response.json();
-      return { data, status: 'success', timestamp: new Date() };
+
+      const data = await response.json()
+      return { data, status: "success", timestamp: new Date() }
     } catch (error) {
       return {
         data: null as T,
-        error: error instanceof Error ? error.message : 'Unknown error',
-        status: 'error',
-        timestamp: new Date()
-      };
+        error: error instanceof Error ? error.message : "Unknown error",
+        status: "error",
+        timestamp: new Date(),
+      }
     }
   }
-  
+
   async post<T>(endpoint: string, data: unknown): Promise<ApiResponse<T>> {
     try {
       const response = await fetch(`${this.baseURL}${endpoint}`, {
-        method: 'POST',
+        method: "POST",
         headers: this.getHeaders(),
-        body: JSON.stringify(data)
-      });
-      
+        body: JSON.stringify(data),
+      })
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
-      
-      const responseData = await response.json();
-      return { data: responseData, status: 'success', timestamp: new Date() };
+
+      const responseData = await response.json()
+      return { data: responseData, status: "success", timestamp: new Date() }
     } catch (error) {
       return {
         data: null as T,
-        error: error instanceof Error ? error.message : 'Unknown error',
-        status: 'error',
-        timestamp: new Date()
-      };
+        error: error instanceof Error ? error.message : "Unknown error",
+        status: "error",
+        timestamp: new Date(),
+      }
     }
   }
-  
+
   private getHeaders(): HeadersInit {
     return {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.getToken()}`
-    };
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${this.getToken()}`,
+    }
   }
-  
+
   private getToken(): string {
-    return localStorage.getItem('authToken') || '';
+    return localStorage.getItem("authToken") || ""
   }
 }
 ```
@@ -449,52 +442,47 @@ class ApiService {
 // Use consistent class organization
 const buttonClasses = [
   // Base styles
-  'px-4 py-2 rounded-md font-medium',
+  "px-4 py-2 rounded-md font-medium",
   // Color and background
-  'bg-blue-600 text-white',
+  "bg-blue-600 text-white",
   // Hover states
-  'hover:bg-blue-700 hover:shadow-md',
+  "hover:bg-blue-700 hover:shadow-md",
   // Disabled states
-  'disabled:opacity-50 disabled:cursor-not-allowed',
+  "disabled:opacity-50 disabled:cursor-not-allowed",
   // Transitions
-  'transition-colors duration-200',
+  "transition-colors duration-200",
   // Focus states
-  'focus:outline-none focus:ring-2 focus:ring-blue-500'
-].join(' ');
+  "focus:outline-none focus:ring-2 focus:ring-blue-500",
+].join(" ")
 
 // Component with conditional styling
 interface ButtonProps {
-  variant: 'primary' | 'secondary' | 'danger';
-  size: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
+  variant: "primary" | "secondary" | "danger"
+  size: "sm" | "md" | "lg"
+  disabled?: boolean
 }
 
 const getButtonClasses = ({ variant, size, disabled }: ButtonProps) => {
-  const baseClasses = 'font-medium rounded-md transition-colors duration-200';
-  
+  const baseClasses = "font-medium rounded-md transition-colors duration-200"
+
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
-    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
-    danger: 'bg-red-600 text-white hover:bg-red-700'
-  };
-  
+    primary: "bg-blue-600 text-white hover:bg-blue-700",
+    secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300",
+    danger: "bg-red-600 text-white hover:bg-red-700",
+  }
+
   const sizeClasses = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg'
-  };
-  
-  const disabledClasses = disabled 
-    ? 'opacity-50 cursor-not-allowed' 
-    : 'focus:outline-none focus:ring-2';
-  
-  return [
-    baseClasses,
-    variantClasses[variant],
-    sizeClasses[size],
-    disabledClasses
-  ].join(' ');
-};
+    sm: "px-3 py-1.5 text-sm",
+    md: "px-4 py-2 text-base",
+    lg: "px-6 py-3 text-lg",
+  }
+
+  const disabledClasses = disabled
+    ? "opacity-50 cursor-not-allowed"
+    : "focus:outline-none focus:ring-2"
+
+  return [baseClasses, variantClasses[variant], sizeClasses[size], disabledClasses].join(" ")
+}
 ```
 
 ### CSS Modules (Alternative)
@@ -536,30 +524,30 @@ describe('UserProfile', () => {
     createdAt: new Date('2023-01-01'),
     updatedAt: new Date('2023-01-01')
   };
-  
+
   it('should render user information correctly', () => {
     render(<UserProfile user={mockUser} />);
-    
+
     expect(screen.getByText('John Doe')).toBeInTheDocument();
     expect(screen.getByText('john@example.com')).toBeInTheDocument();
     expect(screen.getByText('CLIENT')).toBeInTheDocument();
   });
-  
+
   it('should call onEdit when edit button is clicked', async () => {
     const mockOnEdit = jest.fn();
     render(<UserProfile user={mockUser} onEdit={mockOnEdit} />);
-    
+
     const editButton = screen.getByRole('button', { name: /edit/i });
     fireEvent.click(editButton);
-    
+
     await waitFor(() => {
       expect(mockOnEdit).toHaveBeenCalledWith(mockUser.id);
     });
   });
-  
+
   it('should handle loading state', () => {
     render(<UserProfile user={mockUser} loading={true} />);
-    
+
     expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
   });
 });
@@ -569,77 +557,75 @@ describe('UserProfile', () => {
 
 ```typescript
 // API integration testing
-import { ApiService } from './ApiService';
+import { ApiService } from "./ApiService"
 
-describe('ApiService', () => {
-  let apiService: ApiService;
-  
+describe("ApiService", () => {
+  let apiService: ApiService
+
   beforeEach(() => {
-    apiService = new ApiService('http://localhost:3000/api');
-  });
-  
-  it('should fetch users successfully', async () => {
-    const mockUsers = [
-      { id: '1', name: 'John Doe', email: 'john@example.com' }
-    ];
-    
+    apiService = new ApiService("http://localhost:3000/api")
+  })
+
+  it("should fetch users successfully", async () => {
+    const mockUsers = [{ id: "1", name: "John Doe", email: "john@example.com" }]
+
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
-      json: () => Promise.resolve(mockUsers)
-    });
-    
-    const result = await apiService.get<User[]>('/users');
-    
-    expect(result.status).toBe('success');
-    expect(result.data).toEqual(mockUsers);
-    expect(result.error).toBeUndefined();
-  });
-  
-  it('should handle API errors gracefully', async () => {
+      json: () => Promise.resolve(mockUsers),
+    })
+
+    const result = await apiService.get<User[]>("/users")
+
+    expect(result.status).toBe("success")
+    expect(result.data).toEqual(mockUsers)
+    expect(result.error).toBeUndefined()
+  })
+
+  it("should handle API errors gracefully", async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: false,
-      status: 500
-    });
-    
-    const result = await apiService.get<User[]>('/users');
-    
-    expect(result.status).toBe('error');
-    expect(result.data).toBeNull();
-    expect(result.error).toBeDefined();
-  });
-});
+      status: 500,
+    })
+
+    const result = await apiService.get<User[]>("/users")
+
+    expect(result.status).toBe("error")
+    expect(result.data).toBeNull()
+    expect(result.error).toBeDefined()
+  })
+})
 ```
 
 ### E2E Testing
 
 ```typescript
 // Playwright E2E test
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test"
 
-test('user can login and view profile', async ({ page }) => {
+test("user can login and view profile", async ({ page }) => {
   // Navigate to login page
-  await page.goto('/login');
-  
+  await page.goto("/login")
+
   // Fill in login form
-  await page.fill('[data-testid="email-input"]', 'test@example.com');
-  await page.fill('[data-testid="password-input"]', 'password123');
-  
+  await page.fill('[data-testid="email-input"]', "test@example.com")
+  await page.fill('[data-testid="password-input"]', "password123")
+
   // Submit form
-  await page.click('[data-testid="login-button"]');
-  
+  await page.click('[data-testid="login-button"]')
+
   // Wait for redirect to dashboard
-  await page.waitForURL('/dashboard');
-  
+  await page.waitForURL("/dashboard")
+
   // Verify user is logged in
-  await expect(page.locator('[data-testid="user-menu"]')).toBeVisible();
-  
+  await expect(page.locator('[data-testid="user-menu"]')).toBeVisible()
+
   // Navigate to profile
-  await page.click('[data-testid="user-menu"]');
-  await page.click('[data-testid="profile-link"]');
-  
+  await page.click('[data-testid="user-menu"]')
+  await page.click('[data-testid="profile-link"]')
+
   // Verify profile page loads
-  await expect(page.locator('h1')).toContainText('Profile');
-});
+  await expect(page.locator("h1")).toContainText("Profile")
+})
 ```
 
 ## Performance Standards
@@ -652,11 +638,11 @@ export const ExpensiveComponent = React.memo<Props>(({ data, onAction }) => {
   const processedData = useMemo(() => {
     return data.map(item => expensiveProcessing(item));
   }, [data]);
-  
+
   const handleAction = useCallback((id: string) => {
     onAction(id);
   }, [onAction]);
-  
+
   return (
     <div>
       {processedData.map(item => (
@@ -694,21 +680,23 @@ const VirtualizedList = ({ items }: { items: Item[] }) => (
 ```typescript
 // Dynamic imports for code splitting
 const loadFeature = async () => {
-  const { FeatureComponent } = await import('./Feature');
-  return FeatureComponent;
-};
+  const { FeatureComponent } = await import("./Feature")
+  return FeatureComponent
+}
 
 // Tree shaking friendly exports
-export { Button } from './Button';
-export { Input } from './Input';
-export type { ButtonProps } from './Button';
+export { Button } from "./Button"
+export { Input } from "./Input"
+export type { ButtonProps } from "./Button"
 
 // Avoid default exports for better tree shaking
 // ❌ Bad
-export default MyComponent;
+export default MyComponent
 
 // ✅ Good
-export const MyComponent = () => { /* ... */ };
+export const MyComponent = () => {
+  /* ... */
+}
 ```
 
 ## Security Standards
@@ -717,27 +705,27 @@ export const MyComponent = () => { /* ... */ };
 
 ```typescript
 // Input validation with Zod
-import { z } from 'zod';
+import { z } from "zod"
 
 const UserSchema = z.object({
-  name: z.string().min(1, 'Name is required').max(100, 'Name too long'),
-  email: z.string().email('Invalid email format'),
-  age: z.number().min(18, 'Must be 18 or older').max(120, 'Invalid age'),
-  role: z.enum(['admin', 'user', 'guest'])
-});
+  name: z.string().min(1, "Name is required").max(100, "Name too long"),
+  email: z.string().email("Invalid email format"),
+  age: z.number().min(18, "Must be 18 or older").max(120, "Invalid age"),
+  role: z.enum(["admin", "user", "guest"]),
+})
 
-type UserInput = z.infer<typeof UserSchema>;
+type UserInput = z.infer<typeof UserSchema>
 
 const validateUser = (input: unknown): UserInput => {
   try {
-    return UserSchema.parse(input);
+    return UserSchema.parse(input)
   } catch (error) {
     if (error instanceof z.ZodError) {
-      throw new Error(`Validation failed: ${error.errors.map(e => e.message).join(', ')}`);
+      throw new Error(`Validation failed: ${error.errors.map((e) => e.message).join(", ")}`)
     }
-    throw error;
+    throw error
   }
-};
+}
 ```
 
 ### XSS Prevention
@@ -756,9 +744,9 @@ const sanitizeHtml = (html: string): string => {
 // Safe HTML rendering
 const SafeHtml = ({ content }: { content: string }) => {
   const sanitizedContent = useMemo(() => sanitizeHtml(content), [content]);
-  
+
   return (
-    <div 
+    <div
       dangerouslySetInnerHTML={{ __html: sanitizedContent }}
     />
   );
@@ -769,7 +757,7 @@ const SafeHtml = ({ content }: { content: string }) => {
 
 ### Code Comments
 
-```typescript
+````typescript
 /**
  * Calculates the total price including tax and discounts
  * @param items - Array of cart items
@@ -793,12 +781,12 @@ export const calculateTotal = async (
   discountCode?: string
 ): Promise<PriceBreakdown> => {
   // Implementation
-};
-```
+}
+````
 
 ### README Files
 
-```markdown
+````markdown
 # Component Name
 
 Brief description of what this component does.
@@ -808,33 +796,37 @@ Brief description of what this component does.
 ```typescript
 import { ComponentName } from './ComponentName';
 
-<ComponentName 
+<ComponentName
   prop1="value"
   prop2={42}
   onAction={handleAction}
 />
 ```
+````
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| prop1 | string | - | Description of prop1 |
-| prop2 | number | 0 | Description of prop2 |
-| onAction | function | - | Callback function |
+| Prop     | Type     | Default | Description          |
+| -------- | -------- | ------- | -------------------- |
+| prop1    | string   | -       | Description of prop1 |
+| prop2    | number   | 0       | Description of prop2 |
+| onAction | function | -       | Callback function    |
 
 ## Examples
 
 ### Basic Usage
+
 [Example code]
 
 ### Advanced Usage
+
 [Example code]
 
 ## Related Components
 
 - [RelatedComponent1](./RelatedComponent1)
 - [RelatedComponent2](./RelatedComponent2)
+
 ```
 
 ## Related Documentation
@@ -843,3 +835,4 @@ import { ComponentName } from './ComponentName';
 - [System Architecture](../docs/architecture/overview.md)
 - [Current Status](../docs/status/progress.yaml)
 - [Setup Guide](../docs/guides/setup.md)
+```

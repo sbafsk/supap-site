@@ -35,7 +35,11 @@ export function GalleryGrid({ images }: GalleryGridProps) {
       </div>
 
       {selectedIndex !== null && (
-        <GalleryModal images={images} initialIndex={selectedIndex} onClose={() => setSelectedIndex(null)} />
+        <GalleryModal
+          images={images}
+          initialIndex={selectedIndex}
+          onClose={() => setSelectedIndex(null)}
+        />
       )}
     </>
   )
