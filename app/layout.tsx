@@ -13,7 +13,8 @@ export const metadata: Metadata = {
   authors: [{ name: "SUPAP" }],
   openGraph: {
     title: "SUPAP - Sociedad Uruguaya de Psicoterapias Asistidas por Psicodélicos",
-    description: "Organización interdisciplinaria dedicada a la investigación, formación y difusión en psicoterapias asistidas por psicodélicos",
+    description:
+      "Organización interdisciplinaria dedicada a la investigación, formación y difusión en psicoterapias asistidas por psicodélicos",
     url: "https://supap.uy",
     siteName: "SUPAP",
     locale: "es_UY",

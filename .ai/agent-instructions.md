@@ -26,6 +26,7 @@
 ## Context Injection Pattern
 
 When generating content, use this pattern:
+
 ```markdown
 > **AI Context**: This is the single source of truth for [topic].
 > For current status: see `docs/status/progress.yaml`

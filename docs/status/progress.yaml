@@ -1,6 +1,6 @@
 last_updated: "2025-11-05"
 phase: "Bootstrap + v0 UI integration"
-completion_percentage: 15
+completion_percentage: 18
 
 completed_features:
   - id: "project_setup"
@@ -15,6 +15,10 @@ completed_features:
     status: "complete"
     completion_date: "2025-11-05"
     description: "shadcn/ui + Radix primitives integrated; v0 components added"
+  - id: "version_control_setup"
+    status: "complete"
+    completion_date: "2025-11-05"
+    description: "Git repository initialized; remote added (GitHub) and main pushed"
 
 current_priorities:
   - id: "brand_assets"

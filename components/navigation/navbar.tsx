@@ -3,25 +3,16 @@
 import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import { navLinks } from "@/data/nav-links"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-interface NavbarProps {
-  currentPage?: string
-}
-
-export function Navbar({ currentPage }: NavbarProps = {}) {
+export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
-  const navLinks = [
-    { label: "Inicio", href: "/", id: "home" },
-    { label: "Nosotros", href: "/nosotros", id: "about" },
-    { label: "Equipo", href: "/equipo", id: "team" },
-    { label: "Servicios", href: "/servicios", id: "services" },
-    { label: "Eventos", href: "/eventos", id: "events" },
-  ]
+  // links moved to data/nav-links.ts for separation of concerns
 
   const isActive = (href: string) => {
     if (href === "/" && pathname === "/") return true
@@ -37,7 +28,7 @@ export function Navbar({ currentPage }: NavbarProps = {}) {
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/10 transition-all">
       <div className="container mx-auto px-4 py-4">
-        <nav className="flex items-center justify-between">
+        <nav className="flex items-center justify-between" aria-label="Main navigation">
           <Link
             href="/"
             onClick={handleNavClick}
@@ -62,7 +53,9 @@ export function Navbar({ currentPage }: NavbarProps = {}) {
                 key={link.id}
                 href={link.href}
                 onClick={handleNavClick}
-                className={`transition-colors font-medium ${isActive(link.href) ? "text-primary font-bold" : "text-foreground/70 hover:text-primary"
+                className={`transition-colors font-medium ${isActive(link.href)
+                    ? "text-primary font-bold"
+                    : "text-foreground/70 hover:text-primary"
                   }`}
               >
                 {link.label}
@@ -75,7 +68,10 @@ export function Navbar({ currentPage }: NavbarProps = {}) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
+            className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors min-h-[44px] min-w-[44px]"
+            aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -84,7 +80,11 @@ export function Navbar({ currentPage }: NavbarProps = {}) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-primary/10 pt-4 space-y-3">
+          <nav
+            id="mobile-nav"
+            aria-label="Mobile navigation"
+            className="md:hidden mt-4 pb-4 border-t border-primary/10 pt-4 space-y-3"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.id}
@@ -99,7 +99,7 @@ export function Navbar({ currentPage }: NavbarProps = {}) {
               </Link>
             ))}
             <Button className="w-full bg-secondary hover:bg-secondary/90">Contacto</Button>
-          </div>
+          </nav>
         )}
       </div>
     </header>

@@ -8,4 +8,3 @@ This file is intentionally minimal. The single source of truth for complete docu
 - Setup: `guides/setup.md`
 - Deployment: `guides/deployment.md`
 - Standards: `../standards/`
-

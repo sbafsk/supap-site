@@ -1,6 +1,4 @@
 "use client"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -9,8 +7,6 @@ import { Footer } from "@/components/navigation/footer"
 import { Mail, MapPin, Calendar, Users, Heart, Brain, Leaf } from "lucide-react"
 
 export default function HomePage() {
-  const [scrollToSection] = useState(false)
-
   const scrollToId = (id: string) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: "smooth" })
@@ -18,7 +14,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar currentPage="home" />
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/80 to-secondary text-white">
@@ -34,11 +30,15 @@ export default function HomePage() {
               Sociedad Uruguaya de Psicoterapias Asistidas con Psicodélicos
             </h1>
             <p className="text-lg md:text-xl text-white/90 text-pretty leading-relaxed max-w-2xl mx-auto">
-              Promoviendo el uso responsable y terapéutico de sustancias psicodélicas en el contexto de la salud mental
-              y el bienestar integral
+              Promoviendo el uso responsable y terapéutico de sustancias psicodélicas en el contexto
+              de la salud mental y el bienestar integral
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <Button size="lg" variant="secondary" className="text-base md:text-lg px-8 font-semibold">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="text-base md:text-lg px-8 font-semibold"
+              >
                 <Users className="mr-2 h-5 w-5" />
                 Únete a SUPAP
               </Button>
@@ -61,8 +61,9 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Nuestra Misión</h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              SUPAP es una organización dedicada a la investigación, educación y promoción del uso terapéutico
-              responsable de sustancias psicodélicas y enteógenas en el contexto de la salud mental.
+              SUPAP es una organización dedicada a la investigación, educación y promoción del uso
+              terapéutico responsable de sustancias psicodélicas y enteógenas en el contexto de la
+              salud mental.
             </p>
           </div>
 
@@ -77,8 +78,8 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base leading-relaxed">
-                  Promovemos la investigación científica rigurosa sobre los efectos terapéuticos de las sustancias
-                  psicodélicas.
+                  Promovemos la investigación científica rigurosa sobre los efectos terapéuticos de
+                  las sustancias psicodélicas.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -93,8 +94,8 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base leading-relaxed">
-                  Desarrollamos protocolos terapéuticos seguros y efectivos para el tratamiento de diversos trastornos
-                  mentales.
+                  Desarrollamos protocolos terapéuticos seguros y efectivos para el tratamiento de
+                  diversos trastornos mentales.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -109,8 +110,8 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base leading-relaxed">
-                  Educamos a profesionales y al público sobre el uso responsable y los beneficios terapéuticos de estas
-                  sustancias.
+                  Educamos a profesionales y al público sobre el uso responsable y los beneficios
+                  terapéuticos de estas sustancias.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -122,10 +123,12 @@ export default function HomePage() {
       <section id="services" className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Nuestros Servicios</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Nuestros Servicios
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Ofrecemos una amplia gama de servicios para profesionales, investigadores y personas interesadas en las
-              terapias psicodélicas.
+              Ofrecemos una amplia gama de servicios para profesionales, investigadores y personas
+              interesadas en las terapias psicodélicas.
             </p>
           </div>
 
@@ -176,7 +179,9 @@ export default function HomePage() {
                   <CardTitle className="text-lg">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="leading-relaxed">{service.description}</CardDescription>
+                  <CardDescription className="leading-relaxed">
+                    {service.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -188,7 +193,9 @@ export default function HomePage() {
       <section id="events" className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Próximos Eventos</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Próximos Eventos
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               Mantente al día con nuestras actividades académicas y eventos especiales.
             </p>
@@ -201,13 +208,17 @@ export default function HomePage() {
                   <Calendar className="h-5 w-5" />
                   <span className="text-sm font-medium">Próximo Evento</span>
                 </div>
-                <CardTitle className="text-xl">Conversatorio sobre Microdosis de Psilocibes</CardTitle>
+                <CardTitle className="text-xl">
+                  Conversatorio sobre Microdosis de Psilocibes
+                </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3 text-muted-foreground">
                     <Calendar className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
-                    <span className="text-sm md:text-base">Sábado 16/08/25 de 10:00 a 13:00 (UY)</span>
+                    <span className="text-sm md:text-base">
+                      Sábado 16/08/25 de 10:00 a 13:00 (UY)
+                    </span>
                   </div>
                   <div className="flex items-start gap-3 text-muted-foreground">
                     <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
@@ -216,7 +227,9 @@ export default function HomePage() {
                   <p className="text-sm text-muted-foreground font-medium mt-4">
                     Con Lic. Cecilia Morelli & Lic. Sebastián Griscti
                   </p>
-                  <Button className="w-full mt-6 bg-secondary hover:bg-secondary/90 text-base">Registrarse</Button>
+                  <Button className="w-full mt-6 bg-secondary hover:bg-secondary/90 text-base">
+                    Registrarse
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -238,20 +251,28 @@ export default function HomePage() {
                       key={idx}
                       className="flex justify-between items-center py-2 border-b border-border last:border-b-0"
                     >
-                      <span className="text-sm md:text-base font-medium text-foreground">{item.label}</span>
-                      <Badge variant={item.badge as any}>{item.value}</Badge>
+                      <span className="text-sm md:text-base font-medium text-foreground">
+                        {item.label}
+                      </span>
+                      <Badge
+                        variant={item.badge as "default" | "secondary" | "destructive" | "outline"}
+                      >
+                        {item.value}
+                      </Badge>
                     </div>
                   ))}
                 </div>
                 <div className="pt-6 space-y-3">
                   <div className="p-3 bg-muted/50 rounded-lg">
                     <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Inscripción:</strong> link en bio @supap.uy
+                      <strong className="text-foreground">Inscripción:</strong> link en bio
+                      @supap.uy
                     </p>
                   </div>
                   <div className="p-3 bg-muted/50 rounded-lg">
                     <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Consultas:</strong> supap.eventos@gmail.com
+                      <strong className="text-foreground">Consultas:</strong>{" "}
+                      supap.eventos@gmail.com
                     </p>
                   </div>
                 </div>
@@ -265,12 +286,18 @@ export default function HomePage() {
       <section className="py-20 md:py-28 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Únete a Nuestra Comunidad</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Únete a Nuestra Comunidad
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
-              Forma parte de la red de profesionales que está transformando el futuro de la salud mental en Uruguay.
+              Forma parte de la red de profesionales que está transformando el futuro de la salud
+              mental en Uruguay.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90"
+              >
                 <Mail className="mr-2 h-5 w-5" />
                 Contactar
               </Button>

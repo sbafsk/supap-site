@@ -10,9 +10,11 @@
 SUPAP Website is a public-facing institutional website for the Sociedad Uruguaya de Psicoterapias Asistidas por Psicodélicos y Enteógenos (Uruguayan Society of Psychedelic and Entheogen-Assisted Psychotherapies), built with modern web technologies and following AI-friendly development architecture principles.
 
 ### Mission Statement
+
 To create an accessible, informative, and engaging online platform that promotes SUPAP's mission, connects with the public, facilitates participation, and destigmatizes psychedelic-assisted psychotherapy through education and community building.
 
 ### Target Audience
+
 - **General Public**: Individuals interested in learning about psychedelic-assisted psychotherapy
 - **Prospective Members**: Professionals considering joining SUPAP
 - **Current Members**: Accessing information about activities and events
@@ -88,12 +90,14 @@ supap/
 - **Next Priority**: Define website architecture and features
 
 ### Recent Achievements
+
 - ✅ Documented SUPAP organization structure and mission
 - ✅ Analyzed member demographics and professional composition
 - ✅ Identified target audiences and website objectives
 - ✅ Updated boilerplate documentation with SUPAP context
 
 ### Current Focus
+
 - 🔄 Finalizing technical stack selection
 - 🔄 Defining website features and user flows
 - 🔄 Planning information architecture
@@ -102,6 +106,7 @@ supap/
 ## Key Features
 
 ### Core Features (Phase 1 - MVP)
+
 - **Home/About Page**: Organization mission, vision, history, and impact
 - **Activities Section**: Information about study groups, clinical symposiums, workshops, and events
 - **Membership Information**: How to join, benefits, and member categories
@@ -109,6 +114,7 @@ supap/
 - **Responsive Design**: Mobile-first, accessible design for all devices
 
 ### Planned Features (Phase 2)
+
 - **Events Calendar**: Dynamic calendar with upcoming activities and registration
 - **Blog/News Section**: Updates, announcements, and educational content
 - **Resources Library**: Publications, research papers, and educational materials
@@ -116,6 +122,7 @@ supap/
 - **Newsletter Subscription**: Email list management for updates
 
 ### Future Features (Phase 3+)
+
 - **Event Registration System**: Online registration and payment for courses/events
 - **Member Directory**: Searchable directory of professionals (privacy-controlled)
 - **Discussion Forum**: Community space for members to interact
@@ -125,6 +132,7 @@ supap/
 ## Architecture Highlights
 
 ### Design Principles
+
 - **Accessibility First**: WCAG 2.1 AA compliance for inclusive access
 - **Information Clarity**: Clear communication of complex topics for diverse audiences
 - **Privacy by Design**: Sensitive organizational data never exposed publicly
@@ -134,6 +142,7 @@ supap/
 - **Machine-Readable Data**: Status and progress in structured formats
 
 ### Key Architectural Decisions
+
 1. **Separation of Public/Private Content**: Organizational documents in `assets/docs/` are confidential and never exposed in the public website
 2. **Headless CMS for Dynamic Content**: Events, blog posts, and news managed through CMS for non-technical editors
 3. **Static Generation with ISR**: Use Next.js ISR for performance while keeping content fresh
@@ -141,6 +150,7 @@ supap/
 5. **Privacy-First Member Features**: Member portal separated from public site with proper authentication
 
 ### Technology Choices
+
 - **Next.js**: Server-side rendering, static generation, and excellent SEO capabilities
 - **TailwindCSS**: Rapid development with consistent, accessible design system
 - **Supabase/Firebase**: Complete backend solution with auth, database, and storage
@@ -150,18 +160,21 @@ supap/
 ## Development Workflow
 
 ### Getting Started
+
 1. **Clone Repository**: `git clone [repository-url]`
 2. **Install Dependencies**: `yarn install`
 3. **Environment Setup**: Follow `docs/guides/setup.md`
 4. **Start Development**: `yarn dev`
 
 ### Development Standards
+
 - **Code Style**: Follow `standards/coding.md`
 - **Testing**: Maintain [target]% test coverage
 - **Documentation**: Update docs when making changes
 - **Code Review**: All changes require review
 
 ### Available Scripts
+
 ```bash
 yarn dev          # Start development server
 yarn build        # Build for production
@@ -173,6 +186,7 @@ yarn type-check   # TypeScript checking
 ## AI Development Assistance
 
 ### MCP Integration
+
 This project uses Model Context Protocol (MCP) for enhanced AI development assistance:
 
 - **Documentation Server**: Access to all project documentation
@@ -180,11 +194,13 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 - **Context Loading**: Automatic context injection for AI agents
 
 ### AI Context Files
+
 - **Master Context**: `.ai/context.yaml` - Project metadata and status
 - **Agent Instructions**: `.ai/agent-instructions.md` - AI behavior guidelines
 - **MCP Configuration**: `.ai/mcp-config.json` - Server setup
 
 ### AI-Friendly Features
+
 - **Single Source of Truth**: No duplicate information across files
 - **Machine-Readable Status**: YAML-based progress tracking
 - **Context Injection**: AI instructions embedded in relevant sections
@@ -193,12 +209,14 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 ## Performance & Quality
 
 ### Performance Targets
+
 - **Load Time**: [Target load time]
 - **Response Time**: [Target response time]
 - **Uptime**: [Target uptime percentage]
 - **Concurrent Users**: [Target concurrent users]
 
 ### Quality Metrics
+
 - **Test Coverage**: [Target coverage percentage]
 - **Code Quality**: [Quality metrics]
 - **Security**: [Security standards]
@@ -207,32 +225,38 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 ## Security Considerations
 
 ### Authentication & Authorization
+
 - **[Auth Method]**: [Description]
 - **Role-Based Access**: [RBAC implementation]
 - **Session Management**: [Session handling]
 
 ### Data Protection
+
 - **Input Validation**: [Validation strategy]
 - **Data Encryption**: [Encryption approach]
 - **Secure Communication**: [Security measures]
 
 ### Compliance
+
 - **[Compliance Standard 1]**: [Implementation]
 - **[Compliance Standard 2]**: [Implementation]
 
 ## Deployment & Infrastructure
 
 ### Environments
+
 - **Development**: [Dev environment setup]
 - **Staging**: [Staging environment setup]
 - **Production**: [Production environment setup]
 
 ### Deployment Strategy
+
 - **CI/CD Pipeline**: [Pipeline description]
 - **Rollback Strategy**: [Rollback approach]
 - **Monitoring**: [Monitoring setup]
 
 ### Infrastructure
+
 - **Hosting**: [Hosting platform]
 - **CDN**: [CDN setup]
 - **Database**: [Database hosting]
@@ -241,16 +265,19 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 ## Monitoring & Observability
 
 ### Application Monitoring
+
 - **Performance Metrics**: [Performance monitoring]
 - **Error Tracking**: [Error tracking setup]
 - **User Analytics**: [Analytics implementation]
 
 ### Infrastructure Monitoring
+
 - **System Metrics**: [System monitoring]
 - **Database Monitoring**: [Database monitoring]
 - **API Monitoring**: [API monitoring]
 
 ### Alerting
+
 - **Critical Alerts**: [Critical alerting setup]
 - **Performance Alerts**: [Performance alerting]
 - **Security Alerts**: [Security alerting]
@@ -258,6 +285,7 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 ## Business Context
 
 ### SUPAP Organization
+
 - **Full Name**: Sociedad Uruguaya de Psicoterapias Asistidas por Psicodélicos y Enteógenos
 - **Approval**: Ministry of Education and Culture (MEC) & Ministry of Public Health (MSP)
 - **Founded**: February 14, 2023
@@ -266,6 +294,7 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 - **Approach**: Interdisciplinary (Psychology, Medicine, Social Work, Law, Nursing, etc.)
 
 ### Stakeholders
+
 - **Executive Board (Comisión Directiva)**: Strategic direction and overall management
 - **Communication Commission**: Internal/external communications, social media, PR
 - **Academic Commission**: Training programs, scientific activities, knowledge systematization
@@ -277,6 +306,7 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 - **General Public**: Primary target for education and engagement
 
 ### Success Metrics
+
 - **Public Engagement**: Website traffic, social media reach, newsletter subscriptions
 - **Member Growth**: New membership applications and conversions
 - **Event Participation**: Registration and attendance for activities
@@ -284,6 +314,7 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 - **SEO Performance**: Search rankings for relevant psychedelic therapy keywords
 
 ### Constraints
+
 - **Timeline**: Iterative development - start simple, iterate based on feedback
 - **Budget**: Limited budget typical of non-profit organizations
 - **Resources**: Volunteer-driven with potential external development support
@@ -294,12 +325,14 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 ## Related Documentation
 
 ### Core Documentation
+
 - [Current Status](status/progress.yaml) - Machine-readable project status
 - [System Architecture](architecture/overview.md) - Technical architecture details
 - [Setup Guide](guides/setup.md) - Environment setup instructions
 - [Coding Standards](../standards/coding.md) - Development guidelines
 
 ### Additional Resources
+
 - [API Documentation](architecture/api.md) - API specifications
 - [Database Schema](architecture/database.md) - Data model details
 - [Deployment Guide](guides/deployment.md) - Deployment instructions
@@ -308,18 +341,21 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 ## Getting Help
 
 ### For Developers
+
 - Start with this file for project overview
 - Check status files for current progress
 - Refer to specific guides for implementation details
 - Follow coding standards for development
 
 ### For AI Assistants
+
 - Load `.ai/context.yaml` first for project context
 - Check `docs/status/progress.yaml` for current status
 - Refer to `standards/coding.md` for code generation
 - Use context injection patterns for consistency
 
 ### For Stakeholders
+
 - Review this overview for project understanding
 - Check status files for progress updates
 - Refer to business context for project goals
@@ -328,6 +364,7 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 ## Contributing
 
 ### Development Process
+
 1. **Fork Repository**: Create your own copy
 2. **Create Branch**: Use feature branch naming
 3. **Follow Standards**: Adhere to coding standards
@@ -336,6 +373,7 @@ This project uses Model Context Protocol (MCP) for enhanced AI development assis
 6. **Submit PR**: Request code review
 
 ### Documentation Updates
+
 - **Single Source of Truth**: Update information in one place only
 - **Context Injection**: Add AI instructions where relevant
 - **Machine-Readable**: Use structured formats for status data

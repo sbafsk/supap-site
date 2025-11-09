@@ -18,23 +18,27 @@ Before setting up [Project Name], ensure you have the following installed:
 ## Quick Setup (5 minutes)
 
 ### 1. Clone the Repository
+
 ```bash
 git clone [your-repository-url]
 cd [project-name]
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 yarn install
 ```
 
 ### 3. Environment Configuration
+
 ```bash
 cp .env.example .env.local
 # Edit .env.local with your configuration
 ```
 
 ### 4. Start Development Server
+
 ```bash
 yarn dev
 ```
@@ -83,17 +87,19 @@ ANALYTICS_ID=your_analytics_id
 
 ### Database Setup
 
-1. **Create [Your Database] Project**: 
+1. **Create [Your Database] Project**:
    - Go to [your-database-service.com]
    - Create new project
    - Note your project URL and keys
 
 2. **Run Database Migrations**:
+
    ```bash
    npx prisma migrate dev
    ```
 
 3. **Seed Database** (optional):
+
    ```bash
    npx prisma db seed
    ```
@@ -119,12 +125,15 @@ ANALYTICS_ID=your_analytics_id
 ## MCP Integration Setup
 
 ### 1. Install MCP Package
+
 ```bash
 yarn add -D @modelcontextprotocol/server-filesystem
 ```
 
 ### 2. Create MCP Configuration
+
 Create `.cursor/mcp.json` in project root:
+
 ```json
 {
   "mcpServers": {
@@ -133,7 +142,7 @@ Create `.cursor/mcp.json` in project root:
       "args": ["@modelcontextprotocol/server-filesystem", "./docs"]
     },
     "[project-name]-standards": {
-      "command": "npx", 
+      "command": "npx",
       "args": ["@modelcontextprotocol/server-filesystem", "./standards"]
     }
   }
@@ -141,15 +150,18 @@ Create `.cursor/mcp.json` in project root:
 ```
 
 ### 3. Session Management (Recommended)
+
 - Use `docs/session-management/session-notes.md` to capture focus and blockers
 - Use `docs/session-management/resumption-checklist.md` to resume quickly
 
 ### 4. Documentation Workflow
+
 - Use `.claude/commands/` for `/doc-audit`, `/doc-structure`, `/api-docs`, `/review-cycle`
 - Follow `.claude/output-style.md` for consistent writing
 - Draft in `docs/_working/` and promote to `docs/` when stable
 
 ### 5. Resources
+
 Repo-level supporting materials live in `resources/` and are not copied into projects.
 
 ## Development Workflow
@@ -191,6 +203,7 @@ Repo-level supporting materials live in `resources/` and are not copied into pro
 ### Common Issues
 
 #### Port Already in Use
+
 ```bash
 # Kill process using port 3000
 lsof -ti:3000 | xargs kill -9
@@ -200,30 +213,35 @@ yarn dev -- -p 3001
 ```
 
 #### Database Connection Issues
+
 - Verify environment variables are correct
 - Check database service status
 - Confirm network connectivity
 - Verify database credentials and permissions
 
 #### Build Errors
+
 - Clear node_modules: `rm -rf node_modules && yarn install`
 - Clear Next.js cache: `rm -rf .next`
 - Clear package manager cache: `yarn cache clean`
 - Check for TypeScript errors: `yarn type-check`
 
 #### Authentication Issues
+
 - Verify auth service configuration
 - Check environment variables
 - Test with different browsers/incognito mode
 - Review auth service logs
 
 #### MCP Integration Issues
+
 - Ensure package is installed: `yarn list @modelcontextprotocol/server-filesystem`
 - Check JSON syntax in `.cursor/mcp.json`
 - Restart Cursor AI completely
 - Verify file paths in MCP configuration
 
 #### Performance Issues
+
 - Check bundle size: `yarn analyze`
 - Review network tab in browser dev tools
 - Monitor memory usage
@@ -232,11 +250,13 @@ yarn dev -- -p 3001
 ### Environment-Specific Issues
 
 #### Development Environment
+
 - Hot reload not working: Restart dev server
 - Styling issues: Check TailwindCSS configuration
 - API calls failing: Verify backend service is running
 
 #### Production Environment
+
 - Build failing: Check environment variables
 - Runtime errors: Review error logs
 - Performance issues: Enable monitoring
@@ -244,18 +264,21 @@ yarn dev -- -p 3001
 ## Security Considerations
 
 ### Environment Variables
+
 - Never commit `.env.local` to version control
 - Use different secrets for different environments
 - Rotate secrets regularly
 - Use environment-specific configurations
 
 ### Database Security
+
 - Enable SSL connections
 - Use connection pooling
 - Implement proper access controls
 - Regular security audits
 
 ### API Security
+
 - Implement rate limiting
 - Use HTTPS in production
 - Validate all inputs
@@ -268,6 +291,7 @@ yarn dev -- -p 3001
 Based on real-world implementation experience, implement these optimization patterns:
 
 #### 1. Build Optimization
+
 ```json
 // next.config.js
 module.exports = {
@@ -279,17 +303,17 @@ module.exports = {
       'lucide-react'
     ]
   },
-  
+
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 768, 1024, 1280, 1600],
     imageSizes: [16, 32, 48, 64, 96, 128, 256]
   },
-  
+
   // Compression
   compress: true,
-  
+
   // Remove console logs in production
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
@@ -298,6 +322,7 @@ module.exports = {
 ```
 
 #### 2. Bundle Analysis
+
 ```bash
 # Analyze bundle size regularly
 yarn analyze
@@ -310,25 +335,27 @@ yarn analyze
 ```
 
 #### 3. Performance Monitoring Setup
+
 ```typescript
 // lib/performance.ts
 export const trackWebVitals = (metric: any) => {
-  const { id, name, value } = metric;
-  
+  const { id, name, value } = metric
+
   // Track to your analytics service
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     // Example: Google Analytics
-    gtag('event', name, {
-      event_category: 'Web Vitals',
-      value: Math.round(name === 'CLS' ? value * 1000 : value),
+    gtag("event", name, {
+      event_category: "Web Vitals",
+      value: Math.round(name === "CLS" ? value * 1000 : value),
       event_label: id,
-      non_interaction: true
-    });
+      non_interaction: true,
+    })
   }
-};
+}
 ```
 
 #### 4. Image Optimization Patterns
+
 ```typescript
 // components/OptimizedImage.tsx
 import Image from 'next/image';
@@ -371,18 +398,21 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 Based on successful production deployment experience:
 
 #### Build Performance
+
 - **Build Time**: ~10 seconds for full application
-- **Bundle Size**: 
+- **Bundle Size**:
   - First Load JS: ~200 kB
   - Individual Routes: 100-500 B each
   - Vendor Chunks: Optimized with code splitting
 
 #### Core Web Vitals Targets
+
 - **LCP** (Largest Contentful Paint): < 2.5 seconds
-- **FID** (First Input Delay): < 100 milliseconds  
+- **FID** (First Input Delay): < 100 milliseconds
 - **CLS** (Cumulative Layout Shift): < 0.1
 
 #### Optimization Features Implemented
+
 - ✅ Code Splitting: Automatic Next.js optimization
 - ✅ Image Optimization: WebP/AVIF formats; responsive sizes
 - ✅ CSS Purging: Tailwind CSS optimization

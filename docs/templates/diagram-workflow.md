@@ -15,5 +15,6 @@ flowchart TD
 ```
 
 Guidance:
+
 - Modify nodes to reflect your project's specifics.
 - Link each node to the corresponding doc or command.

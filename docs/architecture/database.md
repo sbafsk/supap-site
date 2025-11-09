@@ -13,6 +13,7 @@
 ### Core Tables
 
 #### [Table 1]
+
 ```sql
 CREATE TABLE [table_name] (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -28,6 +29,7 @@ CREATE TABLE [table_name] (
 **Relationships**: [How it connects to other tables]
 
 #### [Table 2]
+
 ```sql
 CREATE TABLE [table_name] (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

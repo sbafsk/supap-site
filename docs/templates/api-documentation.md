@@ -1,6 +1,7 @@
 # API Documentation Template
 
 ## Document Header
+
 ```yaml
 title: "[API Name] Reference"
 audience: "Developers"
@@ -10,12 +11,14 @@ version: "[API Version]"
 ```
 
 ## Overview
+
 - Purpose and capabilities
 - Authentication requirements
 - Base URL and versioning
 - Rate limiting
 
 ## Quick Start
+
 - Setup steps
 - Basic auth example
 - Simple request/response
@@ -23,6 +26,7 @@ version: "[API Version]"
 ## Endpoints
 
 ### [Endpoint Name]
+
 **`[METHOD] /endpoint/path`**
 
 **Description**: [Endpoint purpose]
@@ -30,9 +34,10 @@ version: "[API Version]"
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| param1    | string | Yes | [Description] |
+| param1 | string | Yes | [Description] |
 
 **Request Example**:
+
 ```http
 [REQUEST_METHOD] /api/v1/endpoint
 Authorization: Bearer [token]
@@ -42,6 +47,7 @@ Content-Type: application/json
 ```
 
 **Response Example**:
+
 ```json
 { "status": "success", "data": {} }
 ```

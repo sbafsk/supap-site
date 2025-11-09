@@ -28,7 +28,8 @@ export default function EventsPage() {
       time: "14:00 - 18:00",
       location: "Sala de Capacitación SUPAP",
       speakers: ["Dr. Fernando López", "Dra. María García"],
-      description: "Aprende técnicas esenciales de preparación psicológica para optimizar resultados terapéuticos.",
+      description:
+        "Aprende técnicas esenciales de preparación psicológica para optimizar resultados terapéuticos.",
       capacity: "30 participantes",
       ticketPrice: "Socios: Gratuito | No socios: $1200 | Estudiantes: $600",
     },
@@ -39,7 +40,8 @@ export default function EventsPage() {
       time: "09:00 - 12:00",
       location: "Virtual",
       speakers: ["Lic. Andrea Martínez"],
-      description: "Abordaje integral del proceso de integración después de sesiones terapéuticas con psicodélicos.",
+      description:
+        "Abordaje integral del proceso de integración después de sesiones terapéuticas con psicodélicos.",
       capacity: "100 participantes",
       ticketPrice: "Socios: Gratuito | No socios: $750",
     },
@@ -50,7 +52,8 @@ export default function EventsPage() {
       time: "18:00 - 20:00",
       location: "Teatro Auditorium",
       speakers: ["Dr. Roberto Silva"],
-      description: "Presentación de últimos avances en investigación clínica sobre tratamiento de depresión.",
+      description:
+        "Presentación de últimos avances en investigación clínica sobre tratamiento de depresión.",
       capacity: "200 participantes",
       ticketPrice: "Socios: Gratuito | No socios: $500",
     },
@@ -93,7 +96,9 @@ export default function EventsPage() {
 
         <div className="relative container mx-auto px-4 py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight">Próximos Eventos</h1>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight">
+              Próximos Eventos
+            </h1>
             <p className="text-lg md:text-xl text-white/90 text-pretty leading-relaxed max-w-2xl mx-auto">
               Aprende de los mejores expertos en un ambiente colaborativo y enriquecedor
             </p>
@@ -108,14 +113,19 @@ export default function EventsPage() {
             <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
               TIPOS DE EVENTOS
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Formatos Variados</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Formatos Variados
+            </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {eventTypes.map((event, idx) => {
               const IconComponent = event.icon
               return (
-                <Card key={idx} className="border-0 shadow-lg hover:shadow-xl transition-all text-center">
+                <Card
+                  key={idx}
+                  className="border-0 shadow-lg hover:shadow-xl transition-all text-center"
+                >
                   <CardHeader>
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="h-6 w-6 text-primary" />
@@ -123,7 +133,9 @@ export default function EventsPage() {
                     <CardTitle className="text-lg">{event.type}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="leading-relaxed">{event.description}</CardDescription>
+                    <CardDescription className="leading-relaxed">
+                      {event.description}
+                    </CardDescription>
                   </CardContent>
                 </Card>
               )
@@ -139,18 +151,25 @@ export default function EventsPage() {
             <Badge className="mx-auto mb-4 px-4 py-1.5 bg-secondary/10 text-secondary border-secondary/20">
               CALENDARIO
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Próximos 4 Eventos</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Próximos 4 Eventos
+            </h2>
           </div>
 
           <div className="space-y-6">
             {upcomingEvents.map((event) => (
-              <Card key={event.id} className="border-0 shadow-lg hover:shadow-xl transition-all overflow-hidden">
+              <Card
+                key={event.id}
+                className="border-0 shadow-lg hover:shadow-xl transition-all overflow-hidden"
+              >
                 <CardHeader className="bg-gradient-to-r from-primary/5 to-secondary/5 pb-4">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <Calendar className="h-5 w-5 text-primary" />
-                        <Badge variant="outline">{new Date(event.date).toLocaleDateString("es-ES")}</Badge>
+                        <Badge variant="outline">
+                          {new Date(event.date).toLocaleDateString("es-ES")}
+                        </Badge>
                       </div>
                       <CardTitle className="text-xl md:text-2xl">{event.title}</CardTitle>
                     </div>
@@ -221,12 +240,14 @@ export default function EventsPage() {
               <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
                 MANTENTE ACTUALIZADO
               </Badge>
-              <CardTitle className="text-3xl md:text-4xl">Suscríbete a Nuestro Newsletter</CardTitle>
+              <CardTitle className="text-3xl md:text-4xl">
+                Suscríbete a Nuestro Newsletter
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <p className="text-center text-muted-foreground leading-relaxed">
-                Recibe las últimas noticias sobre eventos, investigación y oportunidades de formación directamente en tu
-                correo.
+                Recibe las últimas noticias sobre eventos, investigación y oportunidades de
+                formación directamente en tu correo.
               </p>
               <div className="flex gap-3">
                 <input
@@ -247,12 +268,18 @@ export default function EventsPage() {
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">¿No encontraste lo que buscas?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              ¿No encontraste lo que buscas?
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
-              Contáctanos para conocer sobre eventos personalizados, talleres privados o consultoría especializada.
+              Contáctanos para conocer sobre eventos personalizados, talleres privados o consultoría
+              especializada.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90"
+              >
                 Solicitar Evento Personalizado
               </Button>
               <Button

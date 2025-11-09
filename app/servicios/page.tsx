@@ -5,7 +5,16 @@ import { Footer } from "@/components/navigation/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Users, BookOpen, Shield, Briefcase, Network, FileText, CheckCircle, ArrowRight } from "lucide-react"
+import {
+  Users,
+  BookOpen,
+  Shield,
+  Briefcase,
+  Network,
+  FileText,
+  CheckCircle,
+  ArrowRight,
+} from "lucide-react"
 
 export default function ServicesPage() {
   const mainServices = [
@@ -50,11 +59,17 @@ export default function ServicesPage() {
       description:
         "Conferencias, seminarios y conversatorios sobre avances en investigación psicodélica y salud mental",
       icon: Users,
-      details: ["Conferencias especializadas", "Talleres prácticos", "Mesas redondas", "Networking profesional"],
+      details: [
+        "Conferencias especializadas",
+        "Talleres prácticos",
+        "Mesas redondas",
+        "Networking profesional",
+      ],
     },
     {
       title: "Red Internacional de Profesionales",
-      description: "Conexión con expertos y organismos internacionales especializados en terapias psicodélicas",
+      description:
+        "Conexión con expertos y organismos internacionales especializados en terapias psicodélicas",
       icon: Network,
       details: [
         "Directorio de profesionales",
@@ -65,9 +80,15 @@ export default function ServicesPage() {
     },
     {
       title: "Recursos Educativos",
-      description: "Acceso a biblioteca científica, publicaciones especializadas y materiales educativos actualizados",
+      description:
+        "Acceso a biblioteca científica, publicaciones especializadas y materiales educativos actualizados",
       icon: Shield,
-      details: ["Artículos científicos", "Libros especializados", "Videos educativos", "Webinarios grabados"],
+      details: [
+        "Artículos científicos",
+        "Libros especializados",
+        "Videos educativos",
+        "Webinarios grabados",
+      ],
     },
   ]
 
@@ -112,7 +133,8 @@ export default function ServicesPage() {
               Nuestros Servicios
             </h1>
             <p className="text-lg md:text-xl text-white/90 text-pretty leading-relaxed max-w-2xl mx-auto">
-              Soluciones integrales para profesionales e instituciones comprometidas con la excelencia en psicoterapias
+              Soluciones integrales para profesionales e instituciones comprometidas con la
+              excelencia en psicoterapias
             </p>
           </div>
         </div>
@@ -125,9 +147,12 @@ export default function ServicesPage() {
             <Badge className="mx-auto mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
               SERVICIOS PRINCIPALES
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">Lo Que Ofrecemos</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Lo Que Ofrecemos
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Una gama completa de servicios diseñados para apoyar tu crecimiento profesional y práctica clínica
+              Una gama completa de servicios diseñados para apoyar tu crecimiento profesional y
+              práctica clínica
             </p>
           </div>
 
@@ -146,7 +171,9 @@ export default function ServicesPage() {
                     <CardTitle className="text-lg">{service.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <CardDescription className="leading-relaxed">{service.description}</CardDescription>
+                    <CardDescription className="leading-relaxed">
+                      {service.description}
+                    </CardDescription>
                     <ul className="space-y-2 text-sm">
                       {service.details.map((detail, i) => (
                         <li key={i} className="flex items-center gap-2 text-muted-foreground">
@@ -185,7 +212,9 @@ export default function ServicesPage() {
                       <CardTitle className="text-base">{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground text-sm text-center leading-relaxed">{item.description}</p>
+                      <p className="text-muted-foreground text-sm text-center leading-relaxed">
+                        {item.description}
+                      </p>
                     </CardContent>
                   </Card>
                   {idx < serviceProcess.length - 1 && (
@@ -213,9 +242,10 @@ export default function ServicesPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-lg text-foreground leading-relaxed">
-                  En SUPAP, combinamos rigor científico con apoyo personalizado. Nuestro equipo multidisciplinario está
-                  dedicado a tu éxito, ofreciendo programas flexibles, mentoría experta y acceso a la red más amplia de
-                  profesionales en el campo de psicoterapias asistidas por psicodélicos.
+                  En SUPAP, combinamos rigor científico con apoyo personalizado. Nuestro equipo
+                  multidisciplinario está dedicado a tu éxito, ofreciendo programas flexibles,
+                  mentoría experta y acceso a la red más amplia de profesionales en el campo de
+                  psicoterapias asistidas por psicodélicos.
                 </p>
                 <ul className="grid md:grid-cols-2 gap-4">
                   {[
@@ -242,12 +272,17 @@ export default function ServicesPage() {
       <section className="py-20 md:py-28 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">¿Listo para Comenzar?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              ¿Listo para Comenzar?
+            </h2>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
               Contáctanos hoy para descubrir cuál es el servicio más adecuado para ti.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="text-base md:text-lg px-8 font-semibold bg-primary hover:bg-primary/90"
+              >
                 Solicitar Información
               </Button>
               <Button
